@@ -1,4 +1,4 @@
-# TST chatbot Sample #
+# TST megabo Sample #
 
 This application demonstrates a simple, reusable Python web application based on the [Flask microframework](http://flask.pocoo.org/).
 
