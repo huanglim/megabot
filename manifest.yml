@@ -1,0 +1,9 @@
+applications:
+- path: .
+  memory: 1024M
+  instances: 1
+  domain: w3ibm.mybluemix.net
+  name: megabot
+  host: megabot
+  disk_quota: 1024M
+  buildpack: python_buildpack

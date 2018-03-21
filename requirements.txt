@@ -1,0 +1,8 @@
+watson-developer-cloud
+Flask==0.12.2
+selenium==3.8.1
+openpyxl==2.4.1
+json2html==1.2.1
+paramiko==2.4.0
+Flask-OIDC
+cloudant

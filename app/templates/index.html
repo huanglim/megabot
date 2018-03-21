@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block sidebar %} {% endblock %}
+{% block messages %}
+<div class="messages">
+    <div class="row chat chat_bot_row">
+        <img src="static/images/MEGABOT.PNG" width="50px" height="50px" class="square" align="left">
+        <div class="col s9 l7 left chat_bot">
+            <div class="card-panel black-text grey lighten-3">
+                <span class="black-text">Hello {{name}}, I am Megabot, capable of downloading and analyzing BI central report automatically. Please upload a parameters file and kick off!</span>
+            </div>
+        </div>
+    </div>
+    <div class="row chat chat_bot_row">
+        <img src="static/images/MEGABOT.PNG" width="50px" height="50px" class="square" align="left">
+        <div class="col s9 l7 left chat_bot">
+            <div class="card-panel black-text grey lighten-3">
+                <span class="black-text">
+                    Here is the instruction for how to upload your parameters file:
+                    <ul>
+                        <li>step 1. click the download icon <i class="material-icons">cloud_download</i> at bottom left, you will get the template file and please update it with your own parameters.</li>
+                        <li>step 2. click the upload icon <i class="material-icons">cloud_upload</i> at bottom left, please select the parameters file you have updated in step 1.</li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!--<h2 id="dragAndDropContentHeading" class="grey-text lighten-1" align="center">Drag and Drop file here</h2>-->
+</div>
+{% endblock %}
+{% block message_typing %}
+<nav class="message_typing z-depth-3">
+    <div class="nav-wrapper">
+        <div class="row">
+            <div class="col s2 l1 downloadSampleExcel">
+                <div class="col s6 l6 center">
+                    <i id="download" class="material-icons center"  style="cursor:pointer">cloud_download</i>
+                </div>
+                <div class="col s6 l6 file-field center">
+                    <input type="file" id="uploadExcel" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                    <i class="material-icons center">cloud_upload</i>
+                </div>
+            </div>
+            <div class="col s7 input-field">
+                <input id="question" type="text" placeholder="Type your question here ..." autocomplete="off">
+                <i class="material-icons">close</i>
+            </div>
+            <div class="col s2 right sendQuestionButton">
+                    <i class="material-icons right" style="cursor:pointer">send</i>
+            </div>
+        </div>
+    </div>
+</nav>
+{% include 'modal.html'%}{% endblock %}
