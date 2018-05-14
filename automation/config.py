@@ -2,7 +2,7 @@ import os
 from collections import namedtuple
 
 
-HOSTNAME = '9.112.57.191'
+HOSTNAME = '9.112.57.146'
 PORT = 4444
 #PARMFILE_NAME = 'dlr.xlsx'
 PARMFILE_NAME = 'parameter_template.xlsx'
@@ -10,7 +10,6 @@ DEF_SHEET_NAME = 'request'
 WAITSEC = 15
 IS_REMOTE = True
 IS_USER_NEEDED = True
-
 
 USERNAME = os.environ.get('USER_ID')
 PASSWORD = os.environ.get('USER_PASSWORD')

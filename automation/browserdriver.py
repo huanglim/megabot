@@ -28,7 +28,7 @@ def show_log(func):
         logging.info('The section %s is starting' %(func.__name__))
         res = func(*arg, **kw)
         time.sleep(1)
-        logging.info('Thi setion %s is complete'%(func.__name__))
+        logging.info('The section %s is complete'%(func.__name__))
         return res
     return wrapper
 
@@ -48,6 +48,7 @@ class BrowserDriver(object):
         self.password = password
         self.url = url
         self.dirname = dirname
+        self.account_times = 1
 
     def __enter__(self):
         if not self.remote:
@@ -202,6 +203,9 @@ class BrowserDriver(object):
     def input_field(self, value):
         self.driver.find_element_by_xpath("//input[@class='clsTextWidget pt']").send_keys(value)
 
+        # calculate times of account
+        self.account_times = value.count(',') or value.count(';')
+
     def enter_acc(self, value):
         return self.input_field(value)
 
@@ -248,5 +252,6 @@ class BrowserDriver(object):
             if handle != nowhandle:
                 self.driver.switch_to_window(handle)
                 WebDriverWait(self.driver, 30).until(lambda x:x.find_element_by_xpath("//td[@class='headerTitle']"))
-                logging.debug('waiting for download file...')
-                time.sleep(WAITSEC)
+                logging.info('waiting for download file...')
+                if self.account_times >=3:
+                    time.sleep(WAITSEC*4)

@@ -12,6 +12,7 @@ $(document).ready(function(){
 
 	$("input:file").change(function(){
 		upload_excel(this);
+		this.value = '';
 	});
 
 	$(".sendQuestionButton").click(function() {
@@ -46,8 +47,10 @@ function upload_excel(input) {
                 contentType: false,
                 success: function(response) {
                          excelHTML = response.excelHTML;
-                         filename = response.filename
-                         showExcelContent(excelHTML)
+                         filename = response.filename;
+                         request_status = response.request_status;
+                         showBotResponse(request_status);
+                         showExcelContent(excelHTML);
                          <!--window.location.href = 'downloadBI/'+filename-->
                          <!--console.log(response);-->
                 },
@@ -75,8 +78,6 @@ function showExcelContent(excelHTML) {
 				$(userCardPanelDiv).addClass("left");
 			},
 		});
-        message = "Please wait for a few seconds while the BI report is being generated based on above parameters.";
-        showBotResponse(message);
     }
 }
 

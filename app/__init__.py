@@ -6,7 +6,6 @@ from .db import Cloundant_NoSQL_DB
 watson_conversion = WatsonConversion()
 cloudant_nosql_db = Cloundant_NoSQL_DB()
 
-
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])

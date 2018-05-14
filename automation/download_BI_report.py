@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-import logging
+import logging, sys, os
+
+sys.path.append(os.path.dirname(__file__))
 
 from browserdriver import BrowserDriver
 from requestsloader import RequestsLoader
@@ -41,6 +43,7 @@ def download_report(parameter_file=PARMFILE_NAME, host=HOSTNAME, port=PORT, is_r
     try:
         logging.debug('get request reocrds')
         requests = loadrequest.get_requests()
+        receiver_email_addr = loadrequest.get_email()
     except Exception as e:
         raise
 
@@ -51,7 +54,7 @@ def download_report(parameter_file=PARMFILE_NAME, host=HOSTNAME, port=PORT, is_r
     # and return the dirctory name 
     if is_remote:
         try:
-            dir_name = mk_dir(username, host)
+            dir_name = mk_dir(receiver_email_addr, host)
         except Exception as e:
             logging.error('error occurred in the make dir %s' %e)
             return False, 'Error occurred in the make dir'
@@ -85,12 +88,13 @@ def download_report(parameter_file=PARMFILE_NAME, host=HOSTNAME, port=PORT, is_r
                     check your input or your authentication'
                 except Exception as e:
                     raise
-    if is_remote:
-        try:
-            trigger_send_to_ftpserver(host)
-        except Exception as e:
-            logging.error('error occurred in the send to ftpserver %s' %e)
-            return False, 'Error occurred in the send to ftpserver'
+                    
+    # if is_remote:
+    #     try:
+    #         trigger_send_to_ftpserver(host)
+    #     except Exception as e:
+    #         logging.error('error occurred in the send to ftpserver %s' %e)
+    #         return False, 'Error occurred in the send to ftpserver'
             
     return True, 'The report run successfully'
 

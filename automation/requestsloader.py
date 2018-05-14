@@ -4,10 +4,12 @@ import logging, datetime,os,sys
 from collections import OrderedDict
 from openpyxl import load_workbook
 
-sys.path.append(os.path.dirname(__file__))
-from automation.config import PARMFILE_NAME, DEF_SHEET_NAME
+try:
+	from automation.config import PARMFILE_NAME, DEF_SHEET_NAME
+except Exception as e:
+	from config import PARMFILE_NAME, DEF_SHEET_NAME
 
-
+# from config import PARMFILE_NAME, DEF_SHEET_NAME
 
 #singleton mode via decorator 
 def singleton(cls): 
@@ -36,18 +38,19 @@ class RequestsLoader(object):
 		try:
 			self.wb = load_workbook(self.parameter_filename)
 		except Exception as e:
-			raise
+			logging.error('The error is %s, the dirname is %s' %(e, 
+				os.path.abspath(self.parameter_filename)))
 
 		try:
 			self.sheet = self.wb[sheetname]
 		except Exception as e:
-			raise
+			logging.error('the error is %s' %e)
 
 	def get_records(self):
 
 		if self.sheet is None:
 			logging.error('Please init the loadrequest object')
-			return None
+			return False
 
 		records = []
 		for row in range(1, self.sheet.max_row+1):
@@ -58,45 +61,58 @@ class RequestsLoader(object):
 
 		if self.sheet is None:
 			logging.error('Please init the loadrequest object')
-			return None
+			return False
 
 		records_list = []
-		title_value = [col.value for col in self.sheet[1]]
+		title_value = [col.value for col in self.sheet[2]]
 
-		logging.debug('The maxrow of parameter file is %s' %self.sheet.max_row )
+		logging.info('The maxrow of parameter file is %s' %self.sheet.max_row )
 		
-		for row in range(2, self.sheet.max_row+1):
-			row_value = [ col.value for col in self.sheet[row]]
-			records_list.append(OrderedDict(zip(title_value, row_value)))
+		for row in range(3, self.sheet.max_row+1):
+			if self.sheet[row][0].value:
+				row_value = [ col.value for col in self.sheet[row]]
+				records_list.append(OrderedDict(zip(title_value, row_value)))
 		return records_list
 
 	def get_requests_str(self):
 
 		if self.sheet is None:
 			logging.error('Please init the loadrequest object')
-			return None
+			return False
 
 		records_list = []
-		title_value = [col.value for col in self.sheet[1]]
+		title_value = [col.value for col in self.sheet[2]]
 
 		logging.debug('The maxrow of parameter file is %s' %self.sheet.max_row )
 		
-		for row in range(2, self.sheet.max_row+1):
-			row_value = []
-			for col in self.sheet[row]:
-				if isinstance(col.value, datetime.datetime):
-					col.value = '-'.join([str(col.value.year), str(col.value.month), str(col.value.day)])
-				row_value.append(col.value)
-				
-			records_list.append(OrderedDict(zip(title_value, row_value)))
+		for row in range(3, self.sheet.max_row+1):
+			if self.sheet[row][0].value:
+				row_value = []
+				for col in self.sheet[row]:
+					if isinstance(col.value, datetime.datetime):
+						col.value = '-'.join([str(col.value.year), str(col.value.month), str(col.value.day)])
+					row_value.append(col.value)
+					
+				records_list.append(OrderedDict(zip(title_value, row_value)))
 		return records_list
 
+	def get_email(self):
+
+		if self.sheet is None:
+			logging.error('Please init the loadrequest object')
+			return False
+
+		return self.sheet[1][1].value
 
 if __name__ == '__main__':
 	loadrequest = RequestsLoader()
-	loadrequest.load_workbook('parameter_template.xlsx')
+	loadrequest.load_workbook('parameter_template_v1.xlsx')
 	requests = loadrequest.get_requests_str()
 
 	for request in requests:
 		for key, value in request.items():
 			print('%s : %s, type is %s' %(key, value, type(value)))
+
+	email = loadrequest.get_email()
+
+	print(email, type(email))
