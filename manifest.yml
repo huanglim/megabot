@@ -2,8 +2,8 @@ applications:
 - path: .
   memory: 1024M
   instances: 1
-  domain: stage1.mybluemix.net
-  name: megabot
-  host: megabot
+  domain: mybluemix.net
+  name: tstmegabot
+  host: tstmegabot
   disk_quota: 1024M
   buildpack: python_buildpack

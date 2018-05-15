@@ -13,31 +13,32 @@ class Config(object):
 
     # File path
     UPLOAD_FOLDER = os.path.join(basedir,'app\doc\/upload')
-    DOWNLOAD_FOLDER = os.path.join(basedir,'app\doc\download')
+    DOWNLOAD_FOLDER = os.path.join(basedir,'app\doc\/download')
     ALLOWED_EXTENSIONS = {'txt', 'png', 'jpg', 'xls', 'JPG', 'PNG', 'xlsx', 'gif', 'GIF'}
 
     # Cloudant NoSql DB
     CLOUDANT_NOSQL_DB_DATABASE_NAME = \
         os.environ.get('CLOUDANT_NOSQL_DB_DATABASE_NAME') \
-        or 'user_parameter_files'
+        or 'megabot_db'
     CLOUDANT_NOSQL_DB_USER_NAME = \
         os.environ.get('CLOUDANT_NOSQL_DB_USER_NAME') \
-        or 'd390fba6-2dee-4b7b-bb9b-16e0037ac410-bluemix'
+        or "0d0ab079-7631-442d-8355-a466779cb63d-bluemix"
     CLOUDANT_NOSQL_DB_PASSWORD = \
         os.environ.get('CLOUDANT_NOSQL_DB_PASSWORD') \
-        or '30cd32cb535e285b89593851d785f76d538c35692053394ef831f3849b5ff277'
+        or "45e643fcad1755a4828ff390196db82cb01d480537d99367cfbeaa3f39acddf5"
     CLOUDANT_NOSQL_DB_URL = \
         os.environ.get('CLOUDANT_NOSQL_DB_URL') \
-        or 'https://d390fba6-2dee-4b7b-bb9b-16e0037ac410-bluemix:30cd32cb5' \
-           '35e285b89593851d785f76d538c35692053394ef831f3849b5ff277@d390fb' \
-           'a6-2dee-4b7b-bb9b-16e0037ac410-bluemix.cloudant.com'
+        or "https://0d0ab079-7631-442d-8355-a466779cb63d-bluemix:45e643fcad1755a4828ff390196" \
+            "db82cb01d480537d99367cfbeaa3f39acddf5@0d0ab079-7631-442d-8355-a466779cb63d-bluemix.cloudant.com"
 
     # SSO Self-Service Provisioner
-    # HOME_URL = 'https://megabot.au-syd.mybluemix.net/'
-    HOME_URL = 'https://9.112.57.146:8080'
-    OIDC_CALLBACK = 'oidcclient'
+    HOME_URL = 'https://tstmegabot.mybluemix.net/'
+    # OIDC_CALLBACK = 'auth/oidcclient'
+    OIDC_CALLBACK = ''
+    # CLIENT_SECRETS_JSON = os.path.join(basedir,
+    #                                    'app\doc\sso\client_secrets.json')
     CLIENT_SECRETS_JSON = os.path.join(basedir,
-                                       'app\doc\sso\client_secrets.json')
+                                       'app/doc/sso/client_secrets.json')
 
     @staticmethod
     def init_app(app):
