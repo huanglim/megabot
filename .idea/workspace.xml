@@ -2,16 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b176b0bf-cf32-460d-bd33-a906d358a6b2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/megabot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/megabot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/db/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/doc/sso/client_secrets.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/doc/sso/client_secrets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template1_1523946992_424531.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template2_1524215647_6377983.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template2_1524215698_4020731.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template2_1524215800_4671478.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523949419_0984244.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523953240_9550533.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523953945_1113443.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523954248_9570954.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523954655_9470356.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523956065_0132859.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523956065_0132859_1523957103_22756.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523956065_0132859_1523957298_2485287.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523956065_0132859_1523957413_9864914.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523956065_0132859_1523957545_835903.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523956167_9309468.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1523956403_1104996.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_1_1525324023_2674322.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523944530_7615447.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523944728_691092.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523944883_6572437.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523945167_9752073.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523945373_2552245.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523945713_420757.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523945818_1883943.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523945941_7342749.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523946051_8725698.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523946271_3896189.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1523955440_6281812.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1524191865_5025465.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1524212410_9568002.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1524213303_1889112.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1524213922_33908.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1524213990_08296.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1524213994_341221.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1524214003_6309903.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1524214006_9598548.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1525227498_6848338.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1525244199_4691536.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1525253156_6343768.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1525323626_2513375.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1525324415_899649.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1525325029_4763894.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1526283180_133106.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_2_1526283437_4855685.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_error_1523945361_7224753.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_error_1524213958_52529.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_error_1525227370_6353083.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_error_1525324032_4062023.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523887624_033786.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523887758_2621667.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523887918_1297226.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523887963_4508648.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523888156_6589935.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523888300_9959276.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523888432_5338993.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523888806_5867753.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523888860_4592645.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523889176_442746.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523889293_45423.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523889399_311046.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1-Copy_1523889435_5190258.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/doc/upload/parameter_template_v1_1523888186_7033796.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/automation/parameter_template.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/automation/parameter_template_v1-Copy.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/automation/parameter_template_v1.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.yml" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/megabot.py" beforeDir="false" afterPath="$PROJECT_DIR$/megabot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,41 +84,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client_secrets.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/doc/sso/client_secrets.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/main/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+            <state relative-caret-position="440">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/auth/views.py">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../trigger-report/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="269">
+              <caret line="36" column="64" lean-forward="true" selection-start-line="36" selection-start-column="64" selection-end-line="36" selection-end-column="64" />
               <folding>
-                <element signature="e#0#70#0" expanded="true" />
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requestsloader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../trigger-report/trigger/requestsloader.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="download_BI_report.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../trigger-report/trigger/download_BI_report.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="browserdriver.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../trigger-report/trigger/browserdriver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+              <folding>
+                <element signature="e#0#132#1" />
+                <element signature="e#134#152#0" expanded="true" />
+                <element signature="e#760#1037#0" />
+                <element signature="e#820#1018#0" />
+                <element signature="e#2387#2921#0" />
+                <element signature="e#4030#4048#0" />
+                <element signature="e#4850#5774#0" />
+                <element signature="e#4871#5004#0" />
+                <element signature="e#5237#5401#0" />
+                <element signature="e#5594#5674#0" />
+                <element signature="e#6257#6611#0" />
+                <element signature="e#6679#6921#0" />
+                <element signature="e#6983#7228#0" />
+                <element signature="e#7297#7367#0" />
+                <element signature="e#7426#7685#0" />
+                <element signature="e#7505#7542#0" />
+                <element signature="e#7743#7993#0" />
+                <element signature="e#8059#8251#0" />
+                <element signature="e#8293#8323#0" />
+                <element signature="e#8365#8395#0" />
+                <element signature="e#8436#8466#0" />
+                <element signature="e#8513#8543#0" />
+                <element signature="e#8600#8959#0" />
+                <element signature="e#8810#8959#0" />
+                <element signature="e#8824#8920#0" />
+                <element signature="e#9022#9083#0" />
+                <element signature="e#9144#9999#0" />
+                <element signature="e#9653#9999#0" />
+                <element signature="e#9693#9999#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="processagent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../trigger-report/trigger/processagent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="797">
+              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+              <folding>
+                <element signature="e#1#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="configs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../trigger-report/configs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -91,19 +213,24 @@
         <option value="$PROJECT_DIR$/automation/download_BI_report.py" />
         <option value="$PROJECT_DIR$/tests/__init__.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
-        <option value="$PROJECT_DIR$/../../practise/testing/1.py" />
         <option value="$PROJECT_DIR$/automation/browserdriver.py" />
         <option value="$PROJECT_DIR$/../../practise/testing/mapReduce.py" />
-        <option value="$PROJECT_DIR$/app/db/__init__.py" />
         <option value="$PROJECT_DIR$/app/doc/sso/client_secrets.json" />
         <option value="$PROJECT_DIR$/app/auth/views.py" />
-        <option value="$PROJECT_DIR$/app/main/views.py" />
         <option value="$PROJECT_DIR$/megabot.py" />
+        <option value="$PROJECT_DIR$/../trigger-report/trigger/download_BI_report.py" />
+        <option value="$PROJECT_DIR$/../../practise/testing/1.py" />
+        <option value="$PROJECT_DIR$/app/db/__init__.py" />
         <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/app/main/views.py" />
+        <option value="$PROJECT_DIR$/../trigger-report/trigger/processagent.py" />
+        <option value="$PROJECT_DIR$/../trigger-report/main.py" />
+        <option value="$PROJECT_DIR$/../trigger-report/configs.py" />
+        <option value="$PROJECT_DIR$/../trigger-report/trigger/browserdriver.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1395" />
     <option name="height" value="1045" />
   </component>
@@ -131,73 +258,12 @@
           <expand>
             <path>
               <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
+              <item name="trigger-report" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-              <item name="download" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-              <item name="sso" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="megabot" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="megabot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testing" type="462c0819:PsiDirectoryNode" />
+              <item name="trigger-report" type="462c0819:PsiDirectoryNode" />
+              <item name="trigger" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -206,7 +272,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../practise/testing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../trigger-report" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -221,7 +287,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.megabot">
+  <component name="RunManager" selected="Python.main">
     <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="megabot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -235,6 +301,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/__init__.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="testing" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../trigger-report" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../trigger-report/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -280,9 +364,11 @@
       <item itemvalue="Python.megabot" />
       <item itemvalue="Python.__init__" />
       <item itemvalue="Python.mapReduce" />
+      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.megabot" />
         <item itemvalue="Python.mapReduce" />
         <item itemvalue="Python.__init__" />
@@ -303,13 +389,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5482993" visible="true" weight="0.13085938" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5482993" visible="true" weight="0.13085938" />
       <window_info anchor="bottom" id="TODO" order="5" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" x="220" y="439" width="1117" height="340" id="Run" order="10" type="FLOATING" weight="0.27755103" />
+      <window_info active="true" anchor="top" x="0" y="0" width="1536" height="826" id="Run" order="0" type="FLOATING" visible="true" weight="0.27755103" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="6" />
       <window_info id="Structure" order="1" sideWeight="0.4517007" side_tool="true" visible="true" weight="0.13085938" />
@@ -347,66 +432,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Untitled.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/cloudant/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/automation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/watson/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main/errors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2002">
-          <caret line="113" column="23" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_basic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -610,13 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/automation/browserdriver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="23" column="19" lean-forward="true" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../practise/testing/mapReduce.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="423">
@@ -628,26 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/db/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/automation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
@@ -665,13 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/megabot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/doc/sso/client_secrets.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -679,25 +670,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
+    <entry file="file://$PROJECT_DIR$/automation/requestsloader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+        <state relative-caret-position="-1975" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/auth/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/main/views.py">
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/flask/helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        <state relative-caret-position="-2301">
+          <caret line="455" column="73" lean-forward="true" selection-start-line="455" selection-start-column="73" selection-end-line="455" selection-end-column="73" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/auth/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -706,6 +698,71 @@
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/db/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../practise/testing/1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/automation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/megabot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/browserdriver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="73" lean-forward="true" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/automation/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="58" lean-forward="true" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -719,12 +776,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/auth/views.py">
+    <entry file="file://$PROJECT_DIR$/../trigger-report/configs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+        <state relative-caret-position="220">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../trigger-report/trigger/requestsloader.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../trigger-report/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="36" column="64" lean-forward="true" selection-start-line="36" selection-start-column="64" selection-end-line="36" selection-end-column="64" />
           <folding>
-            <element signature="e#0#70#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../trigger-report/trigger/download_BI_report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../trigger-report/trigger/processagent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="797">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="e#1#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../trigger-report/trigger/browserdriver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="e#0#132#1" />
+            <element signature="e#134#152#0" expanded="true" />
+            <element signature="e#760#1037#0" />
+            <element signature="e#820#1018#0" />
+            <element signature="e#2387#2921#0" />
+            <element signature="e#4030#4048#0" />
+            <element signature="e#4850#5774#0" />
+            <element signature="e#4871#5004#0" />
+            <element signature="e#5237#5401#0" />
+            <element signature="e#5594#5674#0" />
+            <element signature="e#6257#6611#0" />
+            <element signature="e#6679#6921#0" />
+            <element signature="e#6983#7228#0" />
+            <element signature="e#7297#7367#0" />
+            <element signature="e#7426#7685#0" />
+            <element signature="e#7505#7542#0" />
+            <element signature="e#7743#7993#0" />
+            <element signature="e#8059#8251#0" />
+            <element signature="e#8293#8323#0" />
+            <element signature="e#8365#8395#0" />
+            <element signature="e#8436#8466#0" />
+            <element signature="e#8513#8543#0" />
+            <element signature="e#8600#8959#0" />
+            <element signature="e#8810#8959#0" />
+            <element signature="e#8824#8920#0" />
+            <element signature="e#9022#9083#0" />
+            <element signature="e#9144#9999#0" />
+            <element signature="e#9653#9999#0" />
+            <element signature="e#9693#9999#0" />
           </folding>
         </state>
       </provider>

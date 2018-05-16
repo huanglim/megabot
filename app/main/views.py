@@ -37,11 +37,14 @@ def ask():
 # download template file
 @main.route('/download/<filename>')
 def download_template(filename):
+    logging.debug('In the function: {}, the file is {}'.\
+                  format('download_template',current_app.config['DOWNLOAD_FOLDER']))
     if os.path.isfile(os.path.join(current_app.config['DOWNLOAD_FOLDER'],
                                    filename)):
+        logging.debug('Has the file{} '.format(os.path.join(current_app.config['DOWNLOAD_FOLDER'],
+                                   filename)))
         return send_from_directory(current_app.config['DOWNLOAD_FOLDER'],
                                    filename, as_attachment=True)
-
 
 # upload parameters file
 @main.route('/upload', methods=['POST'], strict_slashes=False)
@@ -113,9 +116,7 @@ def upload():
                     break
                 else:
                     status_message = "Your {} record is now in process, the email will send to {}," \
-                                     "Your username is {}" \
-                                     "please wait for a while!".format(index+1,
-                                                session['id_token']['firstName'].replace('%20',' '), user_addr)
+                                     "please wait for a while!".format(index+1, user_addr)
                     cloudant_nosql_db.write_to_db(request_record, user=user_addr, status='submitted')
 
         # convert excel to html table

@@ -19,7 +19,7 @@ class Cloundant_NoSQL_DB(object):
         database = self.client.create_database(self.app.config['CLOUDANT_NOSQL_DB_DATABASE_NAME'])
         append_info = {"user":user,
                        "status": status,
-                       "ctime": time.ctime()}
+                       "insert time": time.ctime()}
         new_document = document.copy()
         new_document.update(append_info)
         if database.exists():

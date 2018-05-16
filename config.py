@@ -12,8 +12,8 @@ class Config(object):
     WASTON_CON_URL = 'https://gateway-s.watsonplatform.net/assistant/api'
 
     # File path
-    UPLOAD_FOLDER = os.path.join(basedir,'app\doc\/upload')
-    DOWNLOAD_FOLDER = os.path.join(basedir,'app\doc\/download')
+    UPLOAD_FOLDER = os.path.join(basedir,'app/doc/upload')
+    DOWNLOAD_FOLDER = os.path.join(basedir,'app/doc/download')
     ALLOWED_EXTENSIONS = {'txt', 'png', 'jpg', 'xls', 'JPG', 'PNG', 'xlsx', 'gif', 'GIF'}
 
     # Cloudant NoSql DB
