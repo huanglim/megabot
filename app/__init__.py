@@ -8,6 +8,7 @@ cloudant_nosql_db = Cloundant_NoSQL_DB()
 
 def create_app(config_name):
     app = Flask(__name__)
+    app.secret_key = 'megabot'
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
     watson_conversion.init_app(app)

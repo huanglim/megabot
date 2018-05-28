@@ -1,30 +1,55 @@
 import os,time,json, logging
 from flask import render_template,request,jsonify,send_from_directory,\
-    current_app,session,redirect,g
+    current_app,session,redirect,g, abort
+from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 from . import main
 from .. import watson_conversion,cloudant_nosql_db
-
+from threading import current_thread
 from ..automation import read_excel, send_request, \
                         verify_select_level, verify_email_format, \
                         verify_date, verify_input
 from werkzeug.utils import secure_filename
 from json2html import *
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 @main.route('/',methods=['GET','POST'])
 def index():
+    logging.info('in index')
+
     if current_app.config['DEBUG'] or current_app.config['TESTING']:
         return render_template('index.html')
     else:
-        if 'id_token' not in session:
-            auth_uri = g.flow.step1_get_authorize_url()
-            logging.debug('auth uri is {}'.format(auth_uri))
-            logging.debug('session is {}'.format(session))
+        if 'id_token' not in request.cookies:
+            redirect_uri = current_app.config['OIDC_CALLBACK']
+            current_app.flow = flow_from_clientsecrets(current_app.config['CLIENT_SECRETS_JSON'],
+                                             scope='openid',
+                                             redirect_uri=redirect_uri)
+            auth_uri = current_app.flow.step1_get_authorize_url()
             return redirect(auth_uri)
         else:
-            return render_template('index.html', name=session['id_token']['firstName'].replace('%20', ' '))
+            return render_template('index.html', name=request.cookies['id_token']['firstName'].replace('%20', ' '))
 
+@main.route('/oidc_callback')
+def oidc_callback():
+    logging.info('in callback')
+    code = request.args.get('code')
+    if 'id_token' not in request.cookies and code is not None:
+        try:
+            logging.info('in init id_token')
+            credentials = current_app.flow.step2_exchange(code)
+            id_token = credentials.id_token
+            logging.info('id token is {}'.format(id_token))
+            response = current_app.make_response\
+                (render_template('index.html', name=id_token['firstName'].replace('%20', ' ')))
+            response.set_cookie('id_token',id_token)
+        except FlowExchangeError:
+            abort(401)
+        finally:
+            # return redirect(current_app.config['HOME_URL'])
+            return response
+    else:
+        return render_template('index.html', name=request.cookies['id_token']['firstName'].replace('%20', ' '))
 
 # communicate with watson conversation API
 @main.route("/ask",methods=['POST'])
@@ -53,7 +78,7 @@ def upload():
 
     status = True
     status_message = ''
-    user_addr = ''
+    user_addr = request.cookies['id_token']['emailAddress']
 
     file_dir = current_app.config['UPLOAD_FOLDER']
     if not os.path.exists(file_dir):
@@ -78,7 +103,7 @@ def upload():
         logging.info('complete save %s' %full_file_name)
 
         try:
-            excel_content, user_addr = read_excel(full_file_name)
+            excel_content = read_excel(full_file_name)
         except Exception as e:
             logging.error('Error in read execl! %s' %e)
             status = False
@@ -107,6 +132,11 @@ def upload():
                 #     status_message = 'Invalid Weekending Date Range Start or End date, Please double check your input, \
                 #     Your input is: '
                 #     break
+                elif not cloudant_nosql_db.is_authorized(user_addr, request_record['Select Country/Company']):
+                    status = False
+                    status_message = "You are not allowed to query on country or company " \
+                    "Please double check your input, Your input is: "
+                    break
                 elif not verify_input(request_record['Input Field']):
                     # logging.debug(request_record['Input Field'])
                     status = False
@@ -117,7 +147,7 @@ def upload():
                 else:
                     status_message = "Your {} record is now in process, the email will send to {}," \
                                      "please wait for a while!".format(index+1, user_addr)
-                    cloudant_nosql_db.write_to_db(request_record, user=user_addr, status='submitted')
+                    cloudant_nosql_db.write_to_request(request_record, user=user_addr, status='submitted')
 
         # convert excel to html table
         excel_json = json.dumps(excel_content)

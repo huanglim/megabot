@@ -17,9 +17,8 @@ class Config(object):
     ALLOWED_EXTENSIONS = {'txt', 'png', 'jpg', 'xls', 'JPG', 'PNG', 'xlsx', 'gif', 'GIF'}
 
     # Cloudant NoSql DB
-    CLOUDANT_NOSQL_DB_DATABASE_NAME = \
-        os.environ.get('CLOUDANT_NOSQL_DB_DATABASE_NAME') \
-        or 'megabot_db'
+    CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME = 'megabot_request'
+    CLOUDANT_NOSQL_DB_USER_DATABASE_NAME = 'megabot_user'
     CLOUDANT_NOSQL_DB_USER_NAME = \
         os.environ.get('CLOUDANT_NOSQL_DB_USER_NAME') \
         or "0d0ab079-7631-442d-8355-a466779cb63d-bluemix"
@@ -32,9 +31,11 @@ class Config(object):
             "db82cb01d480537d99367cfbeaa3f39acddf5@0d0ab079-7631-442d-8355-a466779cb63d-bluemix.cloudant.com"
 
     # SSO Self-Service Provisioner
-    HOME_URL = 'https://tstmegabot.mybluemix.net/'
-    # OIDC_CALLBACK = 'auth/oidcclient'
-    OIDC_CALLBACK = ''
+    # HOME_URL = 'https://tstmegabot.mybluemix.net/'
+    # OIDC_CALLBACK = 'https://tstmegabot.mybluemix.net/oidc_callback'
+    HOME_URL = 'https://localhost:8080/'
+    OIDC_CALLBACK = 'https://localhost:8080/oidc_callback'
+    # OIDC_CALLBACK = ''
     # CLIENT_SECRETS_JSON = os.path.join(basedir,
     #                                    'app\doc\sso\client_secrets.json')
     CLIENT_SECRETS_JSON = os.path.join(basedir,

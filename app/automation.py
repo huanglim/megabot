@@ -27,12 +27,18 @@ def convert_2_html(excel_content):
     return excel_html
 
 
-def read_excel(filename):
+def read_excel_with_emai(filename):
     rl = requestsloader.RequestsLoader()
     rl.load_workbook(filename)
     excel_content = rl.get_requests_str()
     email_addr = rl.get_email()
     return excel_content, email_addr
+
+def read_excel(filename):
+    rl = requestsloader.RequestsLoader()
+    rl.load_workbook(filename)
+    excel_content = rl.get_requests_str()
+    return excel_content
 
 def verify_email_format(addr):
     if not addr:
