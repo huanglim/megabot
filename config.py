@@ -19,6 +19,8 @@ class Config(object):
     # Cloudant NoSql DB
     CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME = 'megabot_request'
     CLOUDANT_NOSQL_DB_USER_DATABASE_NAME = 'megabot_user'
+    CLOUDANT_NOSQL_DB_MAIL_DATABASE_NAME ='megabot_mail'
+    CLOUDANT_NOSQL_DB_SCHEDULE_DATABASE_NAME = 'megabot_schedule'
     CLOUDANT_NOSQL_DB_USER_NAME = \
         os.environ.get('CLOUDANT_NOSQL_DB_USER_NAME') \
         or "0d0ab079-7631-442d-8355-a466779cb63d-bluemix"
@@ -41,17 +43,34 @@ class Config(object):
     CLIENT_SECRETS_JSON = os.path.join(basedir,
                                        'app/doc/sso/client_secrets.json')
 
+    MAIL_SERVER = os.environ.get('MAIL_SERVER', 'd25ml01.ibm.com')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', '25'))
+    # MAIL_APPROVER = 'cdwyun@cn.ibm.com'
+    # MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in \
+    #     ['true', 'on', '1']
+    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+
+    MAIL_SENDER = 'apdb2@au.ibm.com'
+
     @staticmethod
     def init_app(app):
         pass
 
 class DevelopmentConfig(Config):
+
     DEBUG = True
 
 class TestingConfig(Config):
+
     TESTING = True
 
 class ProductionConfig(Config):
+
+    PRODUCTION = True
+    HOME_URL = 'https://tstmegabot.mybluemix.net/'
+    OIDC_CALLBACK = 'https://tstmegabot.mybluemix.net/oidc_callback'
+
     @classmethod
     def init_app(cls,app):
         Config.init_app(app)

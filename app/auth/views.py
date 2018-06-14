@@ -2,6 +2,7 @@ from flask import current_app,redirect,request,g,abort,render_template, session
 from . import auth
 from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 import logging
+from functools import wraps
 from pprint import pprint
 
 # @auth.before_app_request
@@ -14,6 +15,25 @@ from pprint import pprint
 #     print('g is {}, current_app is {}'.format(id(g), id(current_app)))
 #
 #     return redirect(auth_uri)
+
+def login(func):
+    @wraps(func)
+    def deco(*args, **kw):
+        if 'id_token' not in session:
+            redirect_uri = current_app.config['OIDC_CALLBACK']
+            current_app.flow = flow_from_clientsecrets(current_app.config['CLIENT_SECRETS_JSON'],
+                                                       scope='openid',
+                                                       redirect_uri=redirect_uri)
+            auth_uri = current_app.flow.step1_get_authorize_url()
+            logging.info(request.url)
+            if 'https://' not in request.url:
+                current_app.config['next'] = request.url.replace('http://', 'https://')
+            else:
+                current_app.config['next'] = request.url
+            return redirect(auth_uri)
+        else:
+            return func(*args, **kw)
+    return deco
 
 # @auth.route('/oidc_callback')
 # def oidc_callback():

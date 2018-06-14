@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="card center">
+    <div class="card-panel col s12 m8 l8">
+        <div class="card-content teal white-text">
+            <h4>Please check the access <br>that you have applied in the BI central:</h4>
+            <p>After you click the update button, the confirm mail will send to the approver. </p>
+        </div>
+        <form method="POST" action="{{ url_for('main.edit_access') }}">
+            <div class="card-tabs">
+              <ul class="tabs tabs-fixed-width teal">
+                <li class="tab"><a class="white-text" href="#country_access">Country access</a></li>
+                <li class="tab"><a class="active white-text" href="#company_access">Company access</a></li>
+              </ul>
+            </div>
+            <div class="card-content">
+              <div id="country_access">
+                <div class="row">
+                <div class="input-field col s12">
+                    <p>
+                     <input id="616: Australia" type="checkbox" name="country" value="616: Australia" >
+                     <label for="616: Australia">616: Australia</label>
+                    </p>
+                  <p>
+                     <input id="641: China Onshore" type="checkbox" name="country" value="641: China Onshore" >
+                     <label for="641: China Onshore">641: China Onshore</label>
+                  </p>
+                </div>
+                </div>
+              </div>
+
+                <div id="company_access">
+                <div class="row">
+                <div class="input-field col s12">
+                    <p>
+                     <input id="641-GDCDL: IBM CHINA GDC DL" type="checkbox" name="company" value="641-GDCDL: IBM CHINA GDC DL" >
+                     <label for="641-GDCDL: IBM CHINA GDC DL">641-GDCDL: IBM CHINA GDC DL</label>
+                    </p>
+                    <p>
+                     <input id="641-SSC: IBM China ISSC" type="checkbox" name="company" value="641-SSC: IBM China ISSC" >
+                     <label for="641-SSC: IBM China ISSC">641-SSC: IBM China ISSC</label>
+                    </p>
+                    <p>
+                     <input id="616-IBMA: IBM Australia" type="checkbox" name="company" value="616-IBMA: IBM Australia" >
+                     <label for="616-IBMA: IBM Australia">616-IBMA: IBM Australia</label>
+                    </p>
+                </div>
+                </div>
+                </div>
+            <div class="card-action">
+                <button class="btn waves-effect waves-light blue" type="submit"
+                        onclick="showToast('The confirm mail has sent to the approver!', 5000)">Update
+                    <i class="material-icons right">send</i>
+                </button>
+                <a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

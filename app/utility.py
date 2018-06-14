@@ -1,10 +1,14 @@
 import os
 import json
 import re
+import logging
+from flask import render_template
 from json2html import *
 from threading import Thread
 from flask import current_app
-
+from flask_mail import Message
+from . import mail
+from . import watson_conversion,cloudant_nosql_db
 from automation import requestsloader,download_BI_report
 
 def send_async_request(app, filename):
@@ -13,13 +17,29 @@ def send_async_request(app, filename):
         download_BI_report.download_report(parameter_file=filename)
         return None
 
-
 def send_request(filename):
     app = current_app._get_current_object()
     thr = Thread(target=send_async_request,args=[app,filename])
     thr.start()
     return thr
 
+def send_async_email(app, msg):
+    with app.app_context():
+        mail.send(msg)
+
+def send_email(to, subject, confirm_link, template=None ):
+    app = current_app._get_current_object()
+    msg = Message(subject,
+                  sender=app.config['MAIL_SENDER'],
+                  recipients=[to])
+    # msg.body = render_template(template + '.txt', **kwargs)
+    msg.html = render_template(template + '.html', confirm_link=confirm_link)
+    thr = Thread(target=send_async_email, args=[app, msg])
+    thr.start()
+    return thr
+
+def get_approver(emailAddress):
+    return emailAddress
 
 def convert_2_html(excel_content):
     excel_json = json.dumps(excel_content)
@@ -48,7 +68,10 @@ def verify_email_format(addr):
 
 def verify_select_level(rpt_level, sel_cty_comp):
     RE_CTY_CODE = re.compile(r'.*\d{3}.*')
-    if rpt_level == 'Company Level' and RE_CTY_CODE.search(sel_cty_comp):
+    print(rpt_level, sel_cty_comp)
+    if rpt_level == 'Company Level' and not RE_CTY_CODE.search(sel_cty_comp):
+        return False
+    else:
         return True
 
 def verify_date(start_date, end_date):
@@ -62,6 +85,14 @@ def verify_input(input_val):
     elif '\n' in input_val:
         return False
     return True
+
+def convert_country(country):
+    re_country = re.split(': ', country)
+    return '{}'.format(re_country[1])
+#
+def convert_company(company):
+    re_comp = re.split(': ', company)
+    return '{}({})'.format(re_comp[1], re_comp[0])
 
 if __name__ == '__main__':
     print(verify_email_format('huang__lmw@@c1n.ibm.com 23'))

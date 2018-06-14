@@ -6,3 +6,4 @@ json2html==1.2.1
 paramiko==2.4.0
 Flask-OIDC
 cloudant
+flask-mail

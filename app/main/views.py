@@ -1,47 +1,60 @@
 import os,time,json, logging
 from flask import render_template,request,jsonify,send_from_directory,\
-    current_app,session,redirect,g, abort
+    current_app,session,redirect,g, abort, url_for, flash
 from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 from . import main
 from .. import watson_conversion,cloudant_nosql_db
+from ..auth.views import login
+# from .forms import AccessForm
 from threading import current_thread
-from ..automation import read_excel, send_request, \
+from ..utility import read_excel, send_request, \
                         verify_select_level, verify_email_format, \
-                        verify_date, verify_input
+                        verify_date, verify_input, send_email, \
+                        get_approver, convert_country, convert_company
 from werkzeug.utils import secure_filename
 from json2html import *
+
+from pprint import pprint
 
 logging.basicConfig(level=logging.INFO)
 
 @main.route('/',methods=['GET','POST'])
+@login
 def index():
     logging.info('in index')
-
-    if current_app.config['DEBUG'] or current_app.config['TESTING']:
-        return render_template('index.html')
-    else:
-        if 'id_token' not in request.cookies:
-            redirect_uri = current_app.config['OIDC_CALLBACK']
-            current_app.flow = flow_from_clientsecrets(current_app.config['CLIENT_SECRETS_JSON'],
-                                             scope='openid',
-                                             redirect_uri=redirect_uri)
-            auth_uri = current_app.flow.step1_get_authorize_url()
-            return redirect(auth_uri)
-        else:
-            return render_template('index.html', name=request.cookies['id_token']['firstName'].replace('%20', ' '))
+    #
+    # if current_app.config['DEBUG'] or current_app.config['TESTING']:
+    #     return render_template('index.html')
+    # else:
+    #     # if 'id_token' not in request.cookies:
+    #     if 'id_token' not in session:
+    #         redirect_uri = current_app.config['OIDC_CALLBACK']
+    #         current_app.flow = flow_from_clientsecrets(current_app.config['CLIENT_SECRETS_JSON'],
+    #                                          scope='openid',
+    #                                          redirect_uri=redirect_uri)
+    #         auth_uri = current_app.flow.step1_get_authorize_url()
+    #         return redirect(auth_uri)
+    #     else:
+    #         return render_template('index.html', name=session['id_token']['firstName'].replace('%20', ' '))
+    return render_template('index.html', name=session['id_token']['firstName'].replace('%20', ' '))
 
 @main.route('/oidc_callback')
 def oidc_callback():
     logging.info('in callback')
     code = request.args.get('code')
-    if 'id_token' not in request.cookies and code is not None:
+    if 'id_token' not in session and code is not None:
         try:
             logging.info('in init id_token')
             credentials = current_app.flow.step2_exchange(code)
             id_token = credentials.id_token
             logging.info('id token is {}'.format(id_token))
+            id_token['firstName'] = id_token['firstName'].replace('%20',' ')
+            id_token['lastName'] = id_token['lastName'].replace('%20', ' ')
+            session['id_token'] = id_token
+            # response = current_app.make_response\
+            #     (render_template('index.html', name=session['id_token']['firstName']))
             response = current_app.make_response\
-                (render_template('index.html', name=id_token['firstName'].replace('%20', ' ')))
+                (redirect(current_app.config['next']))
             response.set_cookie('id_token',id_token)
         except FlowExchangeError:
             abort(401)
@@ -49,15 +62,109 @@ def oidc_callback():
             # return redirect(current_app.config['HOME_URL'])
             return response
     else:
-        return render_template('index.html', name=request.cookies['id_token']['firstName'].replace('%20', ' '))
+        return redirect(current_app.config['next'])
+        # return render_template('index.html', name=session['id_token']['firstName'].replace('%20', ' '))
 
-# communicate with watson conversation API
+@main.route('/userinfo', methods=['GET'])
+def userinfo():
+    if session.get('id_token'):
+        try:
+            user = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+            # pprint(user)
+        except IndexError:
+            cloudant_nosql_db.init_user(session['id_token'])
+            user = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+    else:
+        abort(404)
+    return render_template('userinfo.html', user=user)
+
+@main.route('/edit_access', methods=['GET','POST'])
+def edit_access():
+
+    if request.method == 'POST':
+        _country = request.values.getlist('country')
+        country_access = list(map(convert_country, _country))
+
+        _company = request.values.getlist('company')
+        company_access = list(map(convert_company, _company))
+
+        doc = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+        if country_access:
+            cloudant_nosql_db.update_pending_country_accesses(doc.get('_id'), country_access)
+
+        if company_access:
+            cloudant_nosql_db.update_pending_company_accesses(doc.get('_id'), company_access)
+        # return redirect(url_for('main.userinfo'))
+        doc = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+
+        # Send the email for approval
+        to =  get_approver(session['id_token']['emailAddress'])
+        subject = 'Access request for {}'.format(doc.get('emailAddress'))
+        confirm_link = current_app.config['HOME_URL']+'confirm_access/'+session['id_token']['emailAddress']
+        sender = current_app.config['MAIL_SENDER']
+        # send_email(approver, subject, 'mail_confirm_access', confirm_link)
+        cloudant_nosql_db.write_to_mail(to, sender, subject, confirm_link, doc.get('emailAddress'))
+
+        flash('You have updated the access, the approve mail has sent to the approver!')
+
+        return render_template('userinfo.html', user=doc)
+
+    return render_template('edit_access.html')
+
+@main.route('/confirm_access/<emailAddress>', methods=['GET','POST'])
+@login
+def confirm_access(emailAddress):
+
+    # emailAddress = request.args.get('emailAddress')
+    if not emailAddress:
+        abort(404)
+
+    approver = session['id_token']['firstName']
+
+    approver_mailaddr = session['id_token']['emailAddress']
+    if approver_mailaddr != get_approver(emailAddress):
+        abort(401)
+
+    try:
+        requester = cloudant_nosql_db.get_user_info(emailAddress)
+    except Exception as e:
+        abort(404)
+
+    if request.method == 'POST':
+        logging.info('in the update pending process')
+        if requester.get('pending_country_accesses'):
+            try:
+                cloudant_nosql_db.update_approved_country_accesses(requester.get('_id'),
+                                                                   requester.get('pending_country_accesses'))
+            except Exception as e:
+                raise
+            else:
+                cloudant_nosql_db.update_pending_country_accesses(requester.get('_id'),
+                                                                   None)
+        if requester.get('pending_company_accesses'):
+            try:
+                cloudant_nosql_db.update_approved_company_accesses(requester.get('_id'),
+                                                                   requester.get('pending_company_accesses'))
+            except Exception as e:
+                raise
+            else:
+                cloudant_nosql_db.update_pending_company_accesses(requester.get('_id'),
+                                                                   None)
+
+        if 'https://' not in request.url:
+            _url = request.url.replace('http://', 'https://')
+        else:
+            _url = request.url
+
+        return redirect(_url)
+        # return render_template('confirm_access.html', user=user)
+    return render_template('confirm_access.html', approver=approver, requester=requester)
+
 @main.route("/ask",methods=['POST'])
 def ask():
     input = str(request.form['messageText'])
     return jsonify({'status': 'OK',
                     'answer': watson_conversion.get_response(input)})
-
 
 # download template file
 @main.route('/download/<filename>')
@@ -78,7 +185,7 @@ def upload():
 
     status = True
     status_message = ''
-    user_addr = request.cookies['id_token']['emailAddress']
+    user_addr = session['id_token']['emailAddress']
 
     file_dir = current_app.config['UPLOAD_FOLDER']
     if not os.path.exists(file_dir):
@@ -112,6 +219,7 @@ def upload():
 
         logging.debug('The email address is %s, type is %s' %(user_addr, type(user_addr)))
 
+
         if not verify_email_format(user_addr):
             status = False
             status_message = "Please input correct email address! Your report is not running, " \
@@ -126,17 +234,21 @@ def upload():
                     status_message = "Invalid report level or country/company level, " \
                     "Please double check your input, Your input is: "
                     break
-                # elif not verify_date(request_record['Weekending Date Range Start date'], 
+                # elif not verify_date(request_record['Weekending Date Range Start date'],
                 #                      request_record['Weekending Date Range End date']):
                 #     status = False
                 #     status_message = 'Invalid Weekending Date Range Start or End date, Please double check your input, \
                 #     Your input is: '
                 #     break
-                elif not cloudant_nosql_db.is_authorized(user_addr, request_record['Select Country/Company']):
+                elif not cloudant_nosql_db.is_authorized(user_addr,
+                                                         request_record['Select Report Level'],
+                                                         request_record['Select Country/Company']):
                     status = False
-                    status_message = "You are not allowed to query on country or company " \
-                    "Please double check your input, Your input is: "
-                    break
+                    status_message = "Your privilege checking is failed. Please go to userinfo to confirm your access. " \
+                    "Userinfo is in the right-top of screen."
+                    return jsonify({'status': 'failed',
+                        'request_status':status_message
+                        })
                 elif not verify_input(request_record['Input Field']):
                     # logging.debug(request_record['Input Field'])
                     status = False
