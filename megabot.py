@@ -12,12 +12,3 @@ if __name__ == '__main__':
     else:
         app.run(host=HOST, port=PORT, ssl_context='adhoc')
         # app.run()
-    # #
-    # db = cloudant_nosql_db
-    # approved_accesses = [
-    #     'China Onshore',
-    #     'IBM Australia(616-IBMA)',
-    #     'IBM CHINA GDC DL(641-GDCDL)',
-    # ]
-    # user = db.get_user_info('huanglmw@cn.ibm.com')
-    # db.update_user_info(user['_id'], 'approved_accesses', approved_accesses)

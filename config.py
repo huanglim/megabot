@@ -45,7 +45,6 @@ class Config(object):
 
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'd25ml01.ibm.com')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', '25'))
-    # MAIL_APPROVER = 'cdwyun@cn.ibm.com'
     # MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in \
     #     ['true', 'on', '1']
     # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
