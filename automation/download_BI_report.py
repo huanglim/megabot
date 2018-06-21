@@ -6,7 +6,7 @@ sys.path.append(os.path.dirname(__file__))
 from browserdriver import BrowserDriver
 from requestsloader import RequestsLoader
 from processagent import ProcessAgent
-from utils.commands import mk_dir, trigger_send_to_ftpserver
+from utils.commands import mk_dir #trigger_send_to_ftpserver
 
 from exceptions.exceptions import InvalidCredentials, ReportCriteriaError
 from selenium.common.exceptions import NoSuchElementException

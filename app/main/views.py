@@ -5,7 +5,8 @@ from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 from . import main
 from .. import watson_conversion,cloudant_nosql_db
 from ..auth.views import login
-# from .forms import AccessForm
+from .forms import RegistrationForm
+from wtforms import SelectField
 from threading import current_thread
 from ..utility import read_excel, send_request, \
                         verify_select_level, verify_email_format, \
@@ -105,8 +106,6 @@ def edit_access():
         # send_email(approver, subject, 'mail_confirm_access', confirm_link)
         cloudant_nosql_db.write_to_mail(to, sender, subject, confirm_link, doc.get('emailAddress'))
 
-        flash('You have updated the access, the approve mail has sent to the approver!')
-
         return render_template('userinfo.html', user=doc)
 
     return render_template('edit_access.html')
@@ -165,6 +164,59 @@ def ask():
     input = str(request.form['messageText'])
     return jsonify({'status': 'OK',
                     'answer': watson_conversion.get_response(input)})
+
+
+@main.route("/schedule", methods=["GET", "POST"])
+@login
+def schedule():
+    emailAddress = session['id_token']['emailAddress']
+    try:
+        schedules = cloudant_nosql_db.get_user_schedules(emailAddress)
+    except IndexError as e:
+        logging.info('There is no schedule for the user {}'.format(emailAddress))
+        schedules = None
+    return render_template('schedule.html', schedules=schedules)
+
+@main.route("/task", methods=["GET", "POST"])
+@login
+def task():
+    emailAddress = session['id_token']['emailAddress']
+    try:
+        tasks = cloudant_nosql_db.get_user_tasks(emailAddress)
+    except IndexError as e:
+        logging.info('There is no task for the user {}'.format(emailAddress))
+        tasks = None
+    return render_template('task.html', tasks=tasks)
+
+@main.route("/edit_schedule", methods=["GET","POST"])
+def edit_schedule():
+    form = RegistrationForm(request.form)
+    user = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+    if request.method == 'POST' and form.validate():
+        logging.info('{}'.format(request.form.get('sel_cty_comp')))
+        schedule_record = {
+            "user": session['id_token']['emailAddress'],
+            "Select Report Level": form.sel_rpt_lvl.data,
+            "Select Country/Company": request.form.get('sel_cty_comp'),
+            "Account / Employee": form.sel_acc_emp.data,
+            "Weekending Date Range Start date": str(form.wk_date_start.data),
+            "Weekending Date Range End date": str(form.wk_date_end.data),
+            "Select Report Criteria": form.sel_rpt_crit.data,
+            "Select Report Format": form.sel_rpt_format.data,
+            "Input Field": form.input_field.data,
+            "run date":str(form.run_date.data),
+            "schedule cycle":form.schedule_cycle.data
+        }
+        cloudant_nosql_db.write_to_schedule(schedule_record)
+        redirect_url = url_for('main.schedule')
+        if 'https://' not in redirect_url:
+            _url = redirect_url.replace('http://', 'https://')
+        else:
+            _url = redirect_url
+
+        return redirect(_url)
+
+    return render_template('edit_schedule.html', form=form, user=user)
 
 # download template file
 @main.route('/download/<filename>')

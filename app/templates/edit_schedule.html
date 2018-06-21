@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block messages %}
+{% from "_formhelpers.html" import render_field %}
+
+<div class="row">
+    <div class="col s6 m6 l6 offset-l3">
+        <form method=post>
+          <dl>
+            {{ render_field(form.sel_rpt_lvl)}}
+
+              <dt><label for="sel_cty_comp">Select Report Level</label>
+              <dd>
+              <select id="sel_cty_comp" name="sel_cty_comp">
+                  {% if user.approved_country_accesses %}
+                    {% for access in user.approved_country_accesses %}
+                        <option value={{access}}>{{access}}</option>
+                    {% endfor %}
+                  {% endif %}
+
+                  {% if user.approved_company_accesses %}
+                    {% for access in user.approved_company_accesses %}
+                        <option value={{access}}>{{access}}</option>
+                    {% endfor %}
+                  {% endif %}
+              </select>
+            {{ render_field(form.wk_date_start) }}
+            {{ render_field(form.wk_date_end) }}
+            {{ render_field(form.sel_rpt_format)}}
+            {{ render_field(form.sel_rpt_crit) }}
+            {{ render_field(form.sel_acc_emp) }}
+            {{ render_field(form.input_field) }}
+            {{ render_field(form.schedule_cycle) }}
+            {{ render_field(form.run_date) }}
+
+          </dl>
+          <div class="center">
+            <button class="btn waves-effect waves-light blue" type="submit">Update
+                    <i class="material-icons right">send</i>
+            </button>
+            <a class="btn waves-effect waves-teal" href="{{url_for('main.schedule')}}">Back</a>
+          </div>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

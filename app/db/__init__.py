@@ -22,13 +22,26 @@ class Cloundant_NoSQL_DB(object):
         database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME'])
         append_info = {"user":user,
                        "status": status,
-                       "insert time": time.ctime()}
+                       "submit time": time.ctime()}
         new_document = document.copy()
         new_document.update(append_info)
         if database.exists():
             database.create_document(new_document)
         else:
             database = self.client.create_database(self.app.config['CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME'])
+            database.create_document(new_document)
+
+
+    def write_to_schedule(self, schedule_record):
+        database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_SCHEDULE_DATABASE_NAME'])
+        append_info = {"status": 'active',
+                       "submit time": time.ctime()}
+        new_document = schedule_record.copy()
+        new_document.update(append_info)
+        if database.exists():
+            database.create_document(new_document)
+        else:
+            database = self.client.create_database(self.app.config['CLOUDANT_NOSQL_DB_SCHEDULE_DATABASE_NAME'])
             database.create_document(new_document)
 
     def is_authorized(self, emailAddress, report_level, request_access):
@@ -56,7 +69,7 @@ class Cloundant_NoSQL_DB(object):
                         "confirm_link": confirm_link,
                         "requester": requester,
                         "status": 'submitted',
-                        "init time": time.ctime()}
+                        "submit time": time.ctime()}
         if database.exists():
             database.create_document(doc)
         else:
@@ -90,6 +103,32 @@ class Cloundant_NoSQL_DB(object):
             raise
         else:
             return res[0]
+
+    def get_user_schedules(self, emailAddress):
+        database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_SCHEDULE_DATABASE_NAME'])
+        if not database.exists():
+            database = self.client.create_database(self.app.config['CLOUDANT_NOSQL_DB_SCHEDULE_DATABASE_NAME'])
+
+        selector = {'user':{'$eq':emailAddress}}
+        try:
+            res = database.get_query_result(selector)[0]
+        except Exception as e:
+            raise
+        else:
+            return res
+
+    def get_user_tasks(self, emailAddress):
+        database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME'])
+        if not database.exists():
+            database = self.client.create_database(self.app.config['CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME'])
+
+        selector = {'user': {'$eq': emailAddress}}
+        try:
+            res = database.get_query_result(selector)[0]
+        except Exception as e:
+            raise
+        else:
+            return res
 
     def get_doc_id(self, emailAddress):
         return self.get_user_info(emailAddress)['_id']

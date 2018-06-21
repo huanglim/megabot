@@ -2,6 +2,9 @@
 $(document).ready(function(){
     $('.materialboxed').materialbox();
     $(".button-collapse").sideNav();
+    $('select').material_select();
+//    $(".datepicker").datepicker();
+//    $('select').formSelect();
 	$("#question").keypress(function(e){
 		var key = e.which;
 		if (key == 13) // the enter key code
