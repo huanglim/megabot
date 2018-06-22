@@ -81,11 +81,11 @@ class RequestsLoader(object):
 			return False
 
 		records_list = []
-		title_value = [col.value for col in self.sheet[2]]
+		title_value = [col.value for col in self.sheet[1]]
 
 		logging.debug('The maxrow of parameter file is %s' %self.sheet.max_row )
 		
-		for row in range(3, self.sheet.max_row+1):
+		for row in range(2, self.sheet.max_row+1):
 			if self.sheet[row][0].value:
 				row_value = []
 				for col in self.sheet[row]:
@@ -106,13 +106,9 @@ class RequestsLoader(object):
 
 if __name__ == '__main__':
 	loadrequest = RequestsLoader()
-	loadrequest.load_workbook('parameter_template_v1.xlsx')
+	loadrequest.load_workbook('parameter_template.xlsx')
 	requests = loadrequest.get_requests_str()
 
 	for request in requests:
 		for key, value in request.items():
 			print('%s : %s, type is %s' %(key, value, type(value)))
-
-	email = loadrequest.get_email()
-
-	print(email, type(email))

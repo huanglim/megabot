@@ -8,11 +8,11 @@ from ..auth.views import login
 from .forms import RegistrationForm
 from wtforms import SelectField
 from threading import current_thread
-from ..utility import read_excel, send_request, \
+from ..utility import read_excel,  \
                         verify_select_level, verify_email_format, \
-                        verify_date, verify_input, send_email, \
-                        get_approver, convert_country, convert_company, \
-                        send_email_api
+                        verify_template, verify_input,  \
+                        get_approver, convert_country, convert_company
+
 from werkzeug.utils import secure_filename
 from json2html import *
 
@@ -211,9 +211,12 @@ def edit_schedule():
         cloudant_nosql_db.write_to_schedule(schedule_record)
         redirect_url = url_for('main.schedule')
         if 'https://' not in redirect_url:
-            _url = redirect_url.replace('http://', 'https://')
+            # to fix redirect issue for bluemix
+            _url = current_app.config['HOME_URL'][:-1]+redirect_url
         else:
             _url = redirect_url
+        logging.info('The redirect url is {}, the old one is {}'.format(_url, redirect_url))
+        print(_url, redirect_url)
 
         return redirect(_url)
 
@@ -272,17 +275,19 @@ def upload():
 
         logging.debug('The email address is %s, type is %s' %(user_addr, type(user_addr)))
 
-
-        if not verify_email_format(user_addr):
+        if not verify_template(excel_content):
             status = False
-            status_message = "Please input correct email address! Your report is not running, " \
-            "please correct and reupload. Your input is: "
+            status_message = "Your template is not up to date. Please download the latest one! "
+
+            return jsonify({'status': status,
+                            'request_status': status_message
+                            })
 
         if status:
             for index, request_record in enumerate(excel_content):
                 logging.info('loop & verify request record %s' %request_record)
-                if not verify_select_level(request_record['Select Report Level'],
-                    request_record['Select Country/Company']):
+                if not verify_select_level(request_record.get('Select Report Level'),
+                    request_record.get('Select Country/Company')):
                     status = False
                     status_message = "Invalid report level or country/company level, " \
                     "Please double check your input, Your input is: "

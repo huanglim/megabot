@@ -10,19 +10,7 @@ from flask import current_app
 from flask_mail import Message
 from . import mail
 from . import watson_conversion,cloudant_nosql_db
-from automation import requestsloader,download_BI_report
-
-def send_async_request(app, filename):
-    with app.app_context():
-        os.chdir(current_app.config['UPLOAD_FOLDER'])
-        download_BI_report.download_report(parameter_file=filename)
-        return None
-
-def send_request(filename):
-    app = current_app._get_current_object()
-    thr = Thread(target=send_async_request,args=[app,filename])
-    thr.start()
-    return thr
+from automation import requestsloader
 
 def send_async_email(app, msg):
     with app.app_context():
@@ -83,6 +71,10 @@ def read_excel(filename):
     rl.load_workbook(filename)
     excel_content = rl.get_requests_str()
     return excel_content
+
+def verify_template(excel_content):
+    if excel_content[0].get('Select Report Level'):
+        return True
 
 def verify_email_format(addr):
     if not addr:
