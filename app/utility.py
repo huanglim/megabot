@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import http.client
 import logging
 from flask import render_template
 from json2html import *
@@ -38,6 +39,30 @@ def send_email(to, subject, confirm_link, template=None ):
     thr.start()
     return thr
 
+def send_email_api(to, sender, subject, confirm_link):
+
+    conn = http.client.HTTPSConnection("w3.api.ibm.com")
+
+    payload = "{\"to\":[\"%s\"]," \
+              "\"from\":\"%s\"," \
+              "\"subject\":\"%s\"," \
+              "\"body\":" \
+              "\"Hi, <br> You are receiving an email to confirm the access request. The link is : <br> %s\"}" \
+              % (to, sender, subject, confirm_link)
+
+    headers = {
+        'x-ibm-client-id': "352c77cc-68cc-4d73-a5e5-ef10866719ed",
+        'x-ibm-client-secret': "I0qT0tJ3vE7vB7oS7eX1dM5sP0oY7rP1hW1sN3mE2yB2eX5uM1",
+        'content-type': "application/json",
+        'accept': "application/json"
+    }
+
+    conn.request("POST", "/common/run/email/sendmail", payload, headers)
+    res = conn.getresponse()
+    data = res.read()
+
+    print(data.decode("utf-8"))
+
 def get_approver(emailAddress):
     return emailAddress
 
@@ -45,7 +70,6 @@ def convert_2_html(excel_content):
     excel_json = json.dumps(excel_content)
     excel_html = json2html.convert(json=excel_json, table_attributes="id=\"table-7\"")
     return excel_html
-
 
 def read_excel_with_emai(filename):
     rl = requestsloader.RequestsLoader()
@@ -93,8 +117,3 @@ def convert_country(country):
 def convert_company(company):
     re_comp = re.split(': ', company)
     return '{}({})'.format(re_comp[1], re_comp[0])
-
-if __name__ == '__main__':
-    print(verify_email_format('huang__lmw@@c1n.ibm.com 23'))
-    print(verify_select_level('Company Level', 'China Ons21hare'))
-    print(verify_date('1024-12-12','1234/12/31'))

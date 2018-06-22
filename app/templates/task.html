@@ -20,8 +20,8 @@
                       <th>Status</th>
                   </tr>
                 </thead>
-            {% for task in tasks %}
                 <tbody>
+                {% for task in tasks %}
                   <tr>
                     <td>{{task.get("Select Report Level")}}</td>
                     <td>{{task.get("Select Country/Company")}}</td>
@@ -35,8 +35,8 @@
                     <td>{{task.get("process time")}}</td>
                     <td>{{task.get("status")}}</td>
                   </tr>
+                {% endfor %}
                 </tbody>
-            {% endfor %}
             </table>
         {% else %}
             <h4>The user do not have any task at the moment! </h4>

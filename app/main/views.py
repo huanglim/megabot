@@ -11,7 +11,8 @@ from threading import current_thread
 from ..utility import read_excel, send_request, \
                         verify_select_level, verify_email_format, \
                         verify_date, verify_input, send_email, \
-                        get_approver, convert_country, convert_company
+                        get_approver, convert_country, convert_company, \
+                        send_email_api
 from werkzeug.utils import secure_filename
 from json2html import *
 
@@ -105,7 +106,7 @@ def edit_access():
         sender = current_app.config['MAIL_SENDER']
         # send_email(approver, subject, 'mail_confirm_access', confirm_link)
         cloudant_nosql_db.write_to_mail(to, sender, subject, confirm_link, doc.get('emailAddress'))
-
+        # send_email_api(to, sender, subject, confirm_link)
         return render_template('userinfo.html', user=doc)
 
     return render_template('edit_access.html')
@@ -165,7 +166,6 @@ def ask():
     return jsonify({'status': 'OK',
                     'answer': watson_conversion.get_response(input)})
 
-
 @main.route("/schedule", methods=["GET", "POST"])
 @login
 def schedule():
@@ -183,6 +183,7 @@ def task():
     emailAddress = session['id_token']['emailAddress']
     try:
         tasks = cloudant_nosql_db.get_user_tasks(emailAddress)
+        logging.info(tasks)
     except IndexError as e:
         logging.info('There is no task for the user {}'.format(emailAddress))
         tasks = None

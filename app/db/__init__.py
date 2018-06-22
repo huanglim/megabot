@@ -5,7 +5,6 @@ import logging
 from cloudant.error import CloudantException
 import time
 
-
 class Cloundant_NoSQL_DB(object):
     def __init__(self, app=None):
         if app is not None:
@@ -111,7 +110,7 @@ class Cloundant_NoSQL_DB(object):
 
         selector = {'user':{'$eq':emailAddress}}
         try:
-            res = database.get_query_result(selector)[0]
+            res = database.get_query_result(selector)
         except Exception as e:
             raise
         else:
@@ -121,10 +120,9 @@ class Cloundant_NoSQL_DB(object):
         database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME'])
         if not database.exists():
             database = self.client.create_database(self.app.config['CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME'])
-
         selector = {'user': {'$eq': emailAddress}}
         try:
-            res = database.get_query_result(selector)[0]
+            res = database.get_query_result(selector)
         except Exception as e:
             raise
         else:

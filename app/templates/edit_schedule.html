@@ -8,7 +8,7 @@
           <dl>
             {{ render_field(form.sel_rpt_lvl)}}
 
-              <dt><label for="sel_cty_comp">Select Report Level</label>
+              <dt><label for="sel_cty_comp">Select Country/Company (There won't have any item if you havn't confirmed any access)</label>
               <dd>
               <select id="sel_cty_comp" name="sel_cty_comp">
                   {% if user.approved_country_accesses %}
