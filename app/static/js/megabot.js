@@ -13,6 +13,15 @@ $(document).ready(function(){
 		}
 	});
 
+    $('.switch > label > [type=checkbox][name=lever]').click(function(){
+        if (this.checked){
+            enableSchedule(this)
+            }
+        else {
+            disableSchedule(this)
+            }
+    });
+//#table-7 > tbody:nth-child(2) > tr > td:nth-child(12) > div > div > label > input[type="checkbox"]
 	$("input:file").change(function(){
 		upload_excel(this);
 		this.value = '';
@@ -60,6 +69,35 @@ function upload_excel(input) {
         });
     }
 }
+
+function enableSchedule(data) {
+        $.ajax({
+                type: 'GET',
+                url: '/enable_schedule',
+                data:{"id":data.value},
+//                processData: false,
+                contentType: false,
+                success: function(response) {
+                         alert('Successful enable the schedule!')
+                         console.log(response);
+                         }
+        })
+}
+
+function disableSchedule(data) {
+        $.ajax({
+                type: 'GET',
+                url: '/disable_schedule',
+                data:{"id":data.value},
+//                processData: false,
+                contentType: false,
+                success: function(response) {
+                         alert('Successfully disable the schedule!')
+                         console.log(response);
+                         }
+        })
+}
+
 
 function showExcelContent(excelHTML) {
 	<!--$("#dragAndDropContentHeading").hide();-->

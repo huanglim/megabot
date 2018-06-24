@@ -9,8 +9,8 @@
                   <tr>
                       <th>Select Report Level</th>
                       <th>Select Country/Company</th>
-                      <th>Weekending Date Range Start date</th>
-                      <th>Weekending Date Range End date</th>
+                      <th>Date Range Start date</th>
+                      <th>Date Range End date</th>
                       <th>Account / Employee</th>
                       <th>Select Report Criteria</th>
                       <th>Select Report Format</th>
@@ -18,7 +18,8 @@
                       <th>Schedule Cycle</th>
                       <th>Next Run date</th>
                       <th>Last Run date</th>
-                      <th>Status</th>
+                      <th>Disable/Enable</th>
+                      <!--<th>Enable/Disable</th>-->
                   </tr>
                 </thead>
             {% for schedule in schedules %}
@@ -35,7 +36,18 @@
                     <td>{{schedule.get("schedule cycle")}}</td>
                     <td>{{schedule.get("run date")}}</td>
                     <td>{{schedule.get("last run date")}}</td>
-                    <td>{{schedule.get("status")}}</td>
+                    <!--<td>{{schedule.get("status")}}</td>-->
+                    <td>
+                        <div class="row" align="center">
+                            <div class="switch">
+                                    {% if schedule.status =='active' %}
+                                        <label><input type="checkbox" value="{{schedule._id}}" name="lever" checked><span class="lever"></span></label>
+                                    {% else %}
+                                        <label><input value='{{schedule._id}}' type="checkbox" name="lever"><span class="lever"></span></label>
+                                    {% endif %}
+                            </div>
+                        </div>
+                    </td>
                   </tr>
                 </tbody>
             {% endfor %}

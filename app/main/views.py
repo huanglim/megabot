@@ -166,6 +166,20 @@ def ask():
     return jsonify({'status': 'OK',
                     'answer': watson_conversion.get_response(input)})
 
+@main.route("/enable_schedule",methods=['GET'])
+def enable_schedule():
+
+    _id = request.args['id']
+    cloudant_nosql_db.update_schedule_status(_id, 'active')
+    return jsonify({'status': 'OK'})
+
+@main.route("/disable_schedule",methods=['GET'])
+def disable_schedule():
+
+    _id = request.args['id']
+    cloudant_nosql_db.update_schedule_status(_id, 'disable')
+    return jsonify({'status': 'OK'})
+
 @main.route("/schedule", methods=["GET", "POST"])
 @login
 def schedule():
@@ -192,7 +206,15 @@ def task():
 @main.route("/edit_schedule", methods=["GET","POST"])
 def edit_schedule():
     form = RegistrationForm(request.form)
-    user = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+    # user = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+    # fix bug for -502 when use directly add schedule before init user information.
+    try:
+        user = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+        # pprint(user)
+    except IndexError:
+        cloudant_nosql_db.init_user(session['id_token'])
+        user = cloudant_nosql_db.get_user_info(session['id_token']['emailAddress'])
+
     if request.method == 'POST' and form.validate():
         logging.info('{}'.format(request.form.get('sel_cty_comp')))
         schedule_record = {
