@@ -170,15 +170,31 @@ def ask():
 def enable_schedule():
 
     _id = request.args['id']
-    cloudant_nosql_db.update_schedule_status(_id, 'active')
-    return jsonify({'status': 'OK'})
+    if not _id:
+        render_template('404')
+
+    try:
+        cloudant_nosql_db.update_schedule_status(_id, 'active')
+    except Exception as e:
+        logging.error(e)
+        raise
+    else:
+        return jsonify({'status': True})
 
 @main.route("/disable_schedule",methods=['GET'])
 def disable_schedule():
 
     _id = request.args['id']
-    cloudant_nosql_db.update_schedule_status(_id, 'disable')
-    return jsonify({'status': 'OK'})
+    if not _id:
+        render_template('404')
+
+    try:
+        cloudant_nosql_db.update_schedule_status(_id, 'disable')
+    except Exception as e:
+        logging.error(e)
+        raise
+    else:
+        return jsonify({'status': True})
 
 @main.route("/schedule", methods=["GET", "POST"])
 @login

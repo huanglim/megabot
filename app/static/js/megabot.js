@@ -80,7 +80,11 @@ function enableSchedule(data) {
                 success: function(response) {
                          alert('Successful enable the schedule!')
                          console.log(response);
-                         }
+                         },
+                error:function(error) {
+                        console.log(error);
+                        alert('Failed to update the status');
+                        }
         })
 }
 
@@ -94,7 +98,11 @@ function disableSchedule(data) {
                 success: function(response) {
                          alert('Successfully disable the schedule!')
                          console.log(response);
-                         }
+                         },
+                error:function(error) {
+                        console.log(error);
+                        alert('Failed to update the status');
+                        }
         })
 }
 
