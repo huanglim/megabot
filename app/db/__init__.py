@@ -132,7 +132,7 @@ class Cloundant_NoSQL_DB(object):
         return self.get_user_info(emailAddress)['_id']
 
     def update_user_info(self, doc_id, update_field, to_value):
-        database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_SCHEDULE_DATABASE_NAME'])
+        database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_USER_DATABASE_NAME'])
         remote_doc = Document(database, doc_id)
         remote_doc.update_field(
             action=remote_doc.field_set,

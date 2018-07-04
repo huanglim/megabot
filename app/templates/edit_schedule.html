@@ -13,13 +13,13 @@
               <select id="sel_cty_comp" name="sel_cty_comp">
                   {% if user.approved_country_accesses %}
                     {% for access in user.approved_country_accesses %}
-                        <option value={{access}}>{{access}}</option>
+                        <option value="{{access}}">{{access}}</option>
                     {% endfor %}
                   {% endif %}
 
                   {% if user.approved_company_accesses %}
                     {% for access in user.approved_company_accesses %}
-                        <option value={{access}}>{{access}}</option>
+                        <option value="{{access}}">{{access}}</option>
                     {% endfor %}
                   {% endif %}
               </select>
