@@ -3,6 +3,8 @@
 *.egg
 *.EGG
 *.EGG-INFO
+__pycache__/
+.idea/
 bin
 build
 develop-eggs
@@ -19,4 +21,3 @@ dist
 *.pyc
 *.pyo
 *.tmp*
-__pycache__

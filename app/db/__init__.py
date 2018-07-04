@@ -21,6 +21,7 @@ class Cloundant_NoSQL_DB(object):
         database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_REQUEST_DATABASE_NAME'])
         append_info = {"user":user,
                        "status": status,
+                       "failure_counts":"0",
                        "submit time": time.ctime()}
         new_document = document.copy()
         new_document.update(append_info)
@@ -34,6 +35,7 @@ class Cloundant_NoSQL_DB(object):
     def write_to_schedule(self, schedule_record):
         database = CloudantDatabase(self.client, self.app.config['CLOUDANT_NOSQL_DB_SCHEDULE_DATABASE_NAME'])
         append_info = {"status": 'active',
+                       "failure_counts": "0",
                        "submit time": time.ctime()}
         new_document = schedule_record.copy()
         new_document.update(append_info)

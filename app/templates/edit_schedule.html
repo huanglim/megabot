@@ -8,21 +8,33 @@
           <dl>
             {{ render_field(form.sel_rpt_lvl)}}
 
-              <dt><label for="sel_cty_comp">Select Country/Company (There won't have any item if you havn't confirmed any access)</label>
+              <dt><label for="sel_cty_comp">Select Country/Company</label>
               <dd>
               <select id="sel_cty_comp" name="sel_cty_comp">
-                  {% if user.approved_country_accesses %}
+
+                {% if user.approved_country_accesses %}
                     {% for access in user.approved_country_accesses %}
                         <option value="{{access}}">{{access}}</option>
                     {% endfor %}
-                  {% endif %}
+                {% endif %}
 
-                  {% if user.approved_company_accesses %}
+                {% if user.approved_company_accesses %}
                     {% for access in user.approved_company_accesses %}
                         <option value="{{access}}">{{access}}</option>
                     {% endfor %}
-                  {% endif %}
-              </select>
+                {% endif %}
+              </select></dd>
+
+              {% if user.approved_country_accesses or user.approved_company_accesses %}
+              {% else %}
+                <ul class=errors>
+                  <li class="red-text">
+                      You have no access checked in Megabot. Please go to
+                      <a href="{{url_for('main.userinfo')}}">access</a>
+                      to check BI access firstly! </li>
+                </ul>
+              {% endif %}
+
             {{ render_field(form.wk_date_start) }}
             {{ render_field(form.wk_date_end) }}
             {{ render_field(form.sel_rpt_format)}}
@@ -34,9 +46,16 @@
 
           </dl>
           <div class="center">
-            <button class="btn waves-effect waves-light blue" type="submit">Update
+              {% if user.approved_country_accesses or user.approved_company_accesses  %}
+                  <button class="btn waves-effect waves-light blue" type="submit">Update
                     <i class="material-icons right">send</i>
-            </button>
+                </button>
+              {% else %}
+                  <button class="btn waves-effect waves-light blue" type="submit" disabled>Update
+                    <i class="material-icons right">send</i>
+                      </button>
+              {% endif %}
+
             <a class="btn waves-effect waves-teal" href="{{url_for('main.schedule')}}">Back</a>
           </div>
 
