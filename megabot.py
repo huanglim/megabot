@@ -1,8 +1,10 @@
 import os
 from app import create_app
 
-# app = create_app(os.getenv('MEGABOT_CONFIG','default'))
-app = create_app(os.getenv('MEGABOT_CONFIG', 'production'))
+if os.getenv('VCAP_APP_HOST'):
+    app = create_app(os.getenv('MEGABOT_CONFIG', 'production'))
+else:
+    app = create_app(os.getenv('MEGABOT_CONFIG','default'))
 
 if __name__ == '__main__':
     PORT = int(os.getenv('VCAP_APP_PORT', '8080'))
