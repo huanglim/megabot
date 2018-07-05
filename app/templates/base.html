@@ -3,51 +3,52 @@
 <head>
     <title>IBM AP IGA TST Megabot</title>
     <meta name="description" content="IBM AP IGA TST Megabot: Lets talk to bot!">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet">
     <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css" rel="stylesheet" >-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="/static/css/style.css" rel="stylesheet" type="text/css" >
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,‌​100italic,300,300ita‌​lic,400italic,500,50‌​0italic,700,700itali‌​c,900italic,900' rel='stylesheet' type='text/css'>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,‌​100italic,300,300ita‌​lic,400italic,500,50‌​0italic,700,700itali‌​c,900italic,900'
+          rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>-->
     <script src="/static/js/megabot.js"></script>
 </head>
 <body>
-    <header>
-        {% block header%}
-        <div class="navbar-fixed">
-            <nav>
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo center">IBM AP IGA TST Megabot</a>
+<header>
+    {% block header%}
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center">IBM AP IGA TST Megabot</a>
 
-                    <ul id="dropdown" class="dropdown-content">
-                     <li><a href="{{ url_for('main.userinfo') }}">Access</a></li>
-                     <li><a href="{{ url_for('main.schedule') }}">Schedule</a></li>
-                     <li><a href="{{ url_for('main.task') }}">Task</a></li>
-                    </ul>
-                    <a class='dropdown-button' href='#' data-activates='dropdown'>User Info
-                        <i class="material-icons left">toc</i>
-                        </a>
+                <ul id="dropdown" class="dropdown-content">
+                    <li><a href="{{ url_for('main.userinfo') }}">Access</a></li>
+                    <li><a href="{{ url_for('main.schedule') }}">Schedule</a></li>
+                    <li><a href="{{ url_for('main.task') }}">Task</a></li>
+                </ul>
+                <a class='dropdown-button' href='#' data-activates='dropdown'>User Info
+                    <i class="material-icons left">toc</i>
+                </a>
 
-                    <!--<ul id="nav-mobile" class="right hide-on-med-and-down">-->
-                        <!--<li class="about"><a href="#aboutModal">About</a></li>-->
-                    <!--</ul>-->
-                </div>
-            </nav>
-        </div>
-        {% endblock %}
-    </header>
-    <!--{% block flash_message %}-->
-        <!--<div class="container">-->
-        <!--{% for message in get_flashed_messages() %}-->
-        <!--<div class="alert alert-warning">-->
-            <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
-        <!--</div>-->
-        <!--{% endfor %}-->
-        <!--</div>-->
-    <!--{% endblock %}-->
-    {% block messages %} {% endblock %} {% block message_typing %} {% endblock %}{% block page_content %} {% endblock %}
+                <!--<ul id="nav-mobile" class="right hide-on-med-and-down">-->
+                <!--<li class="about"><a href="#aboutModal">About</a></li>-->
+                <!--</ul>-->
+            </div>
+        </nav>
+    </div>
+    {% endblock %}
+</header>
+<!--{% block flash_message %}-->
+<!--<div class="container">-->
+    <!--{% for message in get_flashed_messages() %}-->
+    <!--<div class="alert alert-warning">-->
+        <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+    <!--</div>-->
+    <!--{% endfor %}-->
+<!--</div>-->
+<!--{% endblock %}-->
+{% block messages %} {% endblock %} {% block message_typing %} {% endblock %}{% block page_content %} {% endblock %}
 </body>
 </html>

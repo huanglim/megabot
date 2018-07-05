@@ -6,55 +6,62 @@
     <div class="col s6 m6 l6 offset-l3" align="center">
         <div class="teal white-text">
             <h4>Please check the access <br>that you have applied in the BI central:</h4>
-            <p>After you click the update button, the confirm mail will send to the approver. </p>
-            <div class="tabs">
-              <ul class="tabs tabs-fixed-width teal">
-                <li class="tab"><a class="white-text" href="#country_access">Country access</a></li>
-                <li class="tab"><a class="active white-text" href="#company_access">Company access</a></li>
-              </ul>
-            </div>
+            <p>After you click the update button, the confirm mail will send to the approver. </p><br>
         </div>
         <form method="POST" action="{{ url_for('main.edit_access') }}">
+            <div class="tabs">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab waves-effect waves-teal"><a class="teal-text" href="#country_access">
+                        <b>Country access</b></a></li>
+                    <li class="tab waves-effect waves-teal"><a class="active teal-text" href="#company_access">
+                        <b>Company access</b></a></li>
+                </ul>
+            </div>
             <div class="row">
-              <div id="country_access">
-                <div class="row">
-                <div class="input-field col s12">
-                    <p>
-                     <input id="616: Australia" type="checkbox" name="country" value="616: Australia" >
-                     <label for="616: Australia">616: Australia</label>
-                    </p>
-                  <p>
-                     <input id="641: China Onshore" type="checkbox" name="country" value="641: China Onshore" >
-                     <label for="641: China Onshore">641: China Onshore</label>
-                  </p>
+                <div id="country_access">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <p>
+                                <input id="616: Australia" type="checkbox" name="country" value="616: Australia">
+                                <label for="616: Australia">616: Australia</label>
+                            </p>
+                            <p>
+                                <input id="641: China Onshore" type="checkbox" name="country"
+                                       value="641: China Onshore">
+                                <label for="641: China Onshore">641: China Onshore</label>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                </div>
-              </div>
 
                 <div id="company_access">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <p>
+                                <input id="641-GDCDL: IBM CHINA GDC DL" type="checkbox" name="company"
+                                       value="641-GDCDL: IBM CHINA GDC DL">
+                                <label for="641-GDCDL: IBM CHINA GDC DL">641-GDCDL: IBM CHINA GDC DL</label>
+                            </p>
+                            <p>
+                                <input id="641-SSC: IBM China ISSC" type="checkbox" name="company"
+                                       value="641-SSC: IBM China ISSC">
+                                <label for="641-SSC: IBM China ISSC">641-SSC: IBM China ISSC</label>
+                            </p>
+                            <p>
+                                <input id="616-IBMA: IBM Australia" type="checkbox" name="company"
+                                       value="616-IBMA: IBM Australia">
+                                <label for="616-IBMA: IBM Australia">616-IBMA: IBM Australia</label>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
-                <div class="input-field col s12">
-                    <p>
-                     <input id="641-GDCDL: IBM CHINA GDC DL" type="checkbox" name="company" value="641-GDCDL: IBM CHINA GDC DL" >
-                     <label for="641-GDCDL: IBM CHINA GDC DL">641-GDCDL: IBM CHINA GDC DL</label>
-                    </p>
-                    <p>
-                     <input id="641-SSC: IBM China ISSC" type="checkbox" name="company" value="641-SSC: IBM China ISSC" >
-                     <label for="641-SSC: IBM China ISSC">641-SSC: IBM China ISSC</label>
-                    </p>
-                    <p>
-                     <input id="616-IBMA: IBM Australia" type="checkbox" name="company" value="616-IBMA: IBM Australia" >
-                     <label for="616-IBMA: IBM Australia">616-IBMA: IBM Australia</label>
-                    </p>
+                    <button class="btn waves-effect waves-light blue" type="submit"
+                            onclick="showToast('The confirm mail has sent to the approver!', 5000)">Update
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>
                 </div>
-                </div>
-                </div>
-            <div class="row">
-                <button class="btn waves-effect waves-light blue" type="submit"
-                        onclick="showToast('The confirm mail has sent to the approver!', 5000)">Update
-                    <i class="material-icons right">send</i>
-                </button>
-                <a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>
             </div>
         </form>
     </div>

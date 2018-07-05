@@ -7,64 +7,70 @@
         <div class="teal white-text">
             <h3>Hi, {{ user.firstName }} </h3>
             <h6>Your access listed as below:</h6>
-            <div class="tabs">
-              <ul class="tabs tabs-fixed-width teal">
-                <li class="tab"><a class="active white-text" href="#approved_access">approved access</a></li>
-                <li class="tab"><a class="white-text" href="#pending_access">pending access</a></li>
-              </ul>
-            </div>
+            <br>
+        </div>
+
+        <div class="tabs">
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab waves-effect waves-teal"><a class="active teal-text" href="#approved_access">
+                    <b>approved access</b></a>
+                </li>
+                <li class="tab waves-effect waves-teal"><a class="teal-text" href="#pending_access">
+                    <b>pending access</b></a>
+                </li>
+            </ul>
         </div>
 
         <div class="row">
-              <div id="approved_access">
-                  <ul class="collection with-header">
-                      <li class="collection-header"><h6>Your approved country accesses:</h6></li>
-                        {% if user.approved_country_accesses %}
-                            {% for access in user.approved_country_accesses %}
-                                <li class="collection-item">{{ access }}</li>
-                            {% endfor %}
-                        {% else %}
-                            <li class="collection-item">You havn't have any access on this subject!</li>
-                        {% endif %}
-                  </ul>
+            <div id="approved_access">
+                <ul class="collection with-header">
+                    <li class="collection-header"><h6>Your approved country accesses:</h6></li>
+                    {% if user.approved_country_accesses %}
+                    {% for access in user.approved_country_accesses %}
+                    <li class="collection-item">{{ access }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li class="collection-item">You havn't have any access on this subject!</li>
+                    {% endif %}
+                </ul>
 
-                  <ul class="collection with-header">
-                      <li class="collection-header"><h6>Your approved company accesses:</h6></li>
-                            {% if user.approved_company_accesses %}
-                                {% for access in user.approved_company_accesses %}
-                                    <li class="collection-item">{{ access }}</li>
-                                {% endfor %}
-                            {% else %}
-                                <li class="collection-item">You havn't have any access on this subject!</li>
-                            {% endif %}
-                  </ul>
-              </div>
-
-              <div id="pending_access">
-                  <ul class="collection with-header">
-                      <li class="collection-header"><h6>Your pending country accesses</h6></li>
-                        {% if user.pending_country_accesses %}
-                            {% for access in user.pending_country_accesses %}
-                                <li class="collection-item">{{ access }}</li>
-                            {% endfor %}
-                        {% else %}
-                             <li class="collection-item">You havn't have any access on this subject!</li>
-                        {% endif %}
-                  </ul>
-
-                  <ul class="collection with-header">
-                      <li class="collection-header"><h6>Your pending company accesses</h6></li>
-                        {% if user.pending_company_accesses %}
-                            {% for access in user.pending_company_accesses %}
-                                <li class="collection-item">{{ access }}</li>
-                            {% endfor %}
-                        {% else %}
-                             <li class="collection-item">You havn't have any access on this subject!</li>
-                        {% endif %}
-                  </ul>
-
-                </div>
+                <ul class="collection with-header">
+                    <li class="collection-header"><h6>Your approved company accesses:</h6></li>
+                    {% if user.approved_company_accesses %}
+                    {% for access in user.approved_company_accesses %}
+                    <li class="collection-item">{{ access }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li class="collection-item">You havn't have any access on this subject!</li>
+                    {% endif %}
+                </ul>
             </div>
+
+            <div id="pending_access">
+                <ul class="collection with-header">
+                    <li class="collection-header"><h6>Your pending country accesses</h6></li>
+                    {% if user.pending_country_accesses %}
+                    {% for access in user.pending_country_accesses %}
+                    <li class="collection-item">{{ access }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li class="collection-item">You havn't have any access on this subject!</li>
+                    {% endif %}
+                </ul>
+
+                <ul class="collection with-header">
+                    <li class="collection-header"><h6>Your pending company accesses</h6></li>
+                    {% if user.pending_company_accesses %}
+                    {% for access in user.pending_company_accesses %}
+                    <li class="collection-item">{{ access }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li class="collection-item">You havn't have any access on this subject!</li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
         <div class="row">
             <a class="btn waves-effect waves-teal" href="{{url_for('main.edit_access')}}">Edit access</a>
             <a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>
@@ -73,72 +79,72 @@
 </div>
 
 <!--<div class="card center">-->
-    <!--<div class="card-panel col s12 m8 l8">-->
-        <!--<div class="card-content teal white-text">-->
-            <!--<h3>Hi, {{ user.firstName }} </h3>-->
-            <!--<h6>Your access listed as below:</h6>-->
-        <!--</div>-->
-        <!--<div class="card-tabs">-->
-          <!--<ul class="tabs tabs-fixed-width teal">-->
-            <!--<li class="tab"><a class="active white-text" href="#approved_access">approved access</a></li>-->
-            <!--<li class="tab"><a class="white-text" href="#pending_access">pending access</a></li>-->
-          <!--</ul>-->
-        <!--</div>-->
-        <!--<div class="card-content">-->
-              <!--<div id="approved_access">-->
-                  <!--<ul class="collection with-header">-->
-                      <!--<li class="collection-header"><h6>Your approved country accesses:</h6></li>-->
-                        <!--{% if user.approved_country_accesses %}-->
-                            <!--{% for access in user.approved_country_accesses %}-->
-                                <!--<li class="collection-item">{{ access }}</li>-->
-                            <!--{% endfor %}-->
-                        <!--{% else %}-->
-                            <!--<li class="collection-item">You havn't have any access on this subject!</li>-->
-                        <!--{% endif %}-->
-                  <!--</ul>-->
+<!--<div class="card-panel col s12 m8 l8">-->
+<!--<div class="card-content teal white-text">-->
+<!--<h3>Hi, {{ user.firstName }} </h3>-->
+<!--<h6>Your access listed as below:</h6>-->
+<!--</div>-->
+<!--<div class="card-tabs">-->
+<!--<ul class="tabs tabs-fixed-width teal">-->
+<!--<li class="tab"><a class="active white-text" href="#approved_access">approved access</a></li>-->
+<!--<li class="tab"><a class="white-text" href="#pending_access">pending access</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<div class="card-content">-->
+<!--<div id="approved_access">-->
+<!--<ul class="collection with-header">-->
+<!--<li class="collection-header"><h6>Your approved country accesses:</h6></li>-->
+<!--{% if user.approved_country_accesses %}-->
+<!--{% for access in user.approved_country_accesses %}-->
+<!--<li class="collection-item">{{ access }}</li>-->
+<!--{% endfor %}-->
+<!--{% else %}-->
+<!--<li class="collection-item">You havn't have any access on this subject!</li>-->
+<!--{% endif %}-->
+<!--</ul>-->
 
-                  <!--<ul class="collection with-header">-->
-                      <!--<li class="collection-header"><h6>Your approved company accesses:</h6></li>-->
-                            <!--{% if user.approved_company_accesses %}-->
-                                <!--{% for access in user.approved_company_accesses %}-->
-                                    <!--<li class="collection-item">{{ access }}</li>-->
-                                <!--{% endfor %}-->
-                            <!--{% else %}-->
-                                <!--<li class="collection-item">You havn't have any access on this subject!</li>-->
-                            <!--{% endif %}-->
-                  <!--</ul>-->
-              <!--</div>-->
+<!--<ul class="collection with-header">-->
+<!--<li class="collection-header"><h6>Your approved company accesses:</h6></li>-->
+<!--{% if user.approved_company_accesses %}-->
+<!--{% for access in user.approved_company_accesses %}-->
+<!--<li class="collection-item">{{ access }}</li>-->
+<!--{% endfor %}-->
+<!--{% else %}-->
+<!--<li class="collection-item">You havn't have any access on this subject!</li>-->
+<!--{% endif %}-->
+<!--</ul>-->
+<!--</div>-->
 
-              <!--<div id="pending_access">-->
-                  <!--<ul class="collection with-header">-->
-                      <!--<li class="collection-header"><h6>Your pending country accesses</h6></li>-->
-                        <!--{% if user.pending_country_accesses %}-->
-                            <!--{% for access in user.pending_country_accesses %}-->
-                                <!--<li class="collection-item">{{ access }}</li>-->
-                            <!--{% endfor %}-->
-                        <!--{% else %}-->
-                             <!--<li class="collection-item">You havn't have any access on this subject!</li>-->
-                        <!--{% endif %}-->
-                  <!--</ul>-->
+<!--<div id="pending_access">-->
+<!--<ul class="collection with-header">-->
+<!--<li class="collection-header"><h6>Your pending country accesses</h6></li>-->
+<!--{% if user.pending_country_accesses %}-->
+<!--{% for access in user.pending_country_accesses %}-->
+<!--<li class="collection-item">{{ access }}</li>-->
+<!--{% endfor %}-->
+<!--{% else %}-->
+<!--<li class="collection-item">You havn't have any access on this subject!</li>-->
+<!--{% endif %}-->
+<!--</ul>-->
 
-                  <!--<ul class="collection with-header">-->
-                      <!--<li class="collection-header"><h6>Your pending company accesses</h6></li>-->
-                        <!--{% if user.pending_company_accesses %}-->
-                            <!--{% for access in user.pending_company_accesses %}-->
-                                <!--<li class="collection-item">{{ access }}</li>-->
-                            <!--{% endfor %}-->
-                        <!--{% else %}-->
-                             <!--<li class="collection-item">You havn't have any access on this subject!</li>-->
-                        <!--{% endif %}-->
-                  <!--</ul>-->
+<!--<ul class="collection with-header">-->
+<!--<li class="collection-header"><h6>Your pending company accesses</h6></li>-->
+<!--{% if user.pending_company_accesses %}-->
+<!--{% for access in user.pending_company_accesses %}-->
+<!--<li class="collection-item">{{ access }}</li>-->
+<!--{% endfor %}-->
+<!--{% else %}-->
+<!--<li class="collection-item">You havn't have any access on this subject!</li>-->
+<!--{% endif %}-->
+<!--</ul>-->
 
-                <!--</div>-->
-            <!--</div>-->
-        <!--<div class="card-action">-->
-            <!--<a class="btn waves-effect waves-teal" href="{{url_for('main.edit_access')}}">Checking Your BI access</a>-->
-            <!--<a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="card-action">-->
+<!--<a class="btn waves-effect waves-teal" href="{{url_for('main.edit_access')}}">Checking Your BI access</a>-->
+<!--<a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
 
 {% endblock %}

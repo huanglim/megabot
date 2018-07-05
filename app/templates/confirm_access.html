@@ -7,68 +7,74 @@
         <div class="teal white-text">
             <h3>Hi, {{ approver }} </h3>
             <h6>{{requester.emailAddress}} requested to confirm the access on Megabot.</h6>
-                <p>Please confirm the access checking shows as below:</p>
-            <div class="card-tabs">
-              <ul class="tabs tabs-fixed-width teal">
-                <li class="tab"><a class="white-text" href="#approved_access">approved access</a></li>
-                <li class="tab"><a class="active white-text" href="#pending_access">pending access</a></li>
-              </ul>
-            </div>
+            <p>Please confirm the access checking shows as below:</p>
+            <br>
         </div>
 
-        <div class="card-content">
-              <div id="approved_access">
-                  <ul class="collection with-header">
-                      <li class="collection-header"><h6>{{requester.emailAddress}} approved country accesses:</h6></li>
-                        {% if requester.approved_country_accesses %}
-                            {% for access in requester.approved_country_accesses %}
-                                <li class="collection-item">{{ access }}</li>
-                            {% endfor %}
-                        {% else %}
-                            <li class="collection-item">{{requester.emailAddress}} havn't have any access on this subject!</li>
-                        {% endif %}
-                  </ul>
+        <div class="tabs">
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab waves-effect waves-teal"><a class="teal-text" href="#approved_access">
+                    <b>approved access</b></a>
+                </li>
+                <li class="tab waves-effect waves-teal"><a class="active teal-text" href="#pending_access">
+                    <b>pending access</b></a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div id="approved_access">
+                <ul class="collection with-header">
+                    <li class="collection-header"><h6>{{requester.emailAddress}} approved country accesses:</h6></li>
+                    {% if requester.approved_country_accesses %}
+                        {% for access in requester.approved_country_accesses %}
+                            <li class="collection-item">{{ access }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="collection-item">{{requester.emailAddress}} havn't have any access on this subject!</li>
+                    {% endif %}
+                </ul>
 
-                  <ul class="collection with-header">
-                      <li class="collection-header"><h6>{{requester.emailAddress}} approved company accesses:</h6></li>
-                            {% if requester.approved_company_accesses %}
-                                {% for access in requester.approved_company_accesses %}
-                                    <li class="collection-item">{{ access }}</li>
-                                {% endfor %}
-                            {% else %}
-                                <li class="collection-item">{{requester.emailAddress}} havn't have any access on this subject!</li>
-                            {% endif %}
-                  </ul>
-              </div>
-
-              <div id="pending_access">
-                  <ul class="collection with-header">
-                      <li class="collection-header"><h6>{{requester.emailAddress}} pending country accesses</h6></li>
-                        {% if requester.pending_country_accesses %}
-                            {% for access in requester.pending_country_accesses %}
-                                <li class="collection-item">{{ access }}</li>
-                            {% endfor %}
-                        {% else %}
-                             <li class="collection-item">{{requester.emailAddress}} havn't have any access on this subject!</li>
-                        {% endif %}
-                  </ul>
-
-                  <ul class="collection with-header">
-                      <li class="collection-header"><h6>{{requester.emailAddress}} pending company accesses</h6></li>
-                        {% if requester.pending_company_accesses %}
-                            {% for access in requester.pending_company_accesses %}
-                                <li class="collection-item">{{ access }}</li>
-                            {% endfor %}
-                        {% else %}
-                             <li class="collection-item">{{requester.emailAddress}} havn't have any access on this subject!</li>
-                        {% endif %}
-                  </ul>
-                </div>
+                <ul class="collection with-header">
+                    <li class="collection-header"><h6>{{requester.emailAddress}} approved company accesses:</h6></li>
+                    {% if requester.approved_company_accesses %}
+                        {% for access in requester.approved_company_accesses %}
+                            <li class="collection-item">{{ access }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="collection-item">{{requester.emailAddress}} havn't have any access on this subject!</li>
+                    {% endif %}
+                </ul>
             </div>
+
+            <div id="pending_access">
+                <ul class="collection with-header">
+                    <li class="collection-header"><h6>{{requester.emailAddress}} pending country accesses</h6></li>
+                    {% if requester.pending_country_accesses %}
+                        {% for access in requester.pending_country_accesses %}
+                            <li class="collection-item">{{ access }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="collection-item">{{requester.emailAddress}} havn't have any access on this subject!</li>
+                    {% endif %}
+                </ul>
+
+                <ul class="collection with-header">
+                    <li class="collection-header"><h6>{{requester.emailAddress}} pending company accesses</h6></li>
+                    {% if requester.pending_company_accesses %}
+                        {% for access in requester.pending_company_accesses %}
+                            <li class="collection-item">{{ access }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="collection-item">{{requester.emailAddress}} havn't have any access on this subject!</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
         <form method='POST' action="{{ url_for('main.confirm_access', emailAddress=requester.emailAddress) }}">
             <div class="card-action">
                 <button class="btn waves-effect waves-light blue" type="submit"
-                onclick="showToast('The pending access have been approved!', 5000)">Confirm access</button>
+                        onclick="showToast('The pending access have been approved!', 5000)">Confirm access
+                </button>
                 <a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>
             </div>
         </form>

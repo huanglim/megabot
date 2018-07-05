@@ -5,26 +5,26 @@
     <div class="col s12 m12 l12" align="center">
         {% if schedules %}
             <table id="table-7">
-                <thead>
-                  <tr>
-                      <th>Select Report Level</th>
-                      <th>Select Country/Company</th>
-                      <th>Date Range Start date</th>
-                      <th>Date Range End date</th>
-                      <th>Account / Employee</th>
-                      <th>Select Report Criteria</th>
-                      <th>Select Report Format</th>
-                      <th>Input Field</th>
-                      <th>Schedule Cycle</th>
-                      <th>Next Run date</th>
-                      <th>Last Run date</th>
-                      <th>Disable/Enable</th>
-                      <!--<th>Enable/Disable</th>-->
-                  </tr>
-                </thead>
+            <thead>
+            <tr>
+                <th>Select Report Level</th>
+                <th>Select Country/Company</th>
+                <th>Date Range Start date</th>
+                <th>Date Range End date</th>
+                <th>Account / Employee</th>
+                <th>Select Report Criteria</th>
+                <th>Select Report Format</th>
+                <th>Input Field</th>
+                <th>Schedule Cycle</th>
+                <th>Next Run date</th>
+                <th>Last Run date</th>
+                <th>Disable/Enable</th>
+                <!--<th>Enable/Disable</th>-->
+            </tr>
+            </thead>
             {% for schedule in schedules %}
                 <tbody>
-                  <tr>
+                <tr>
                     <td>{{schedule.get("Select Report Level")}}</td>
                     <td>{{schedule.get("Select Country/Company")}}</td>
                     <td>{{schedule.get("Weekending Date Range Start date")}}</td>
@@ -40,18 +40,20 @@
                     <td>
                         <div class="row" align="center">
                             <div class="switch">
-                                    {% if schedule.status =='active' %}
-                                        <label><input type="checkbox" value="{{schedule._id}}" name="lever" checked><span class="lever"></span></label>
-                                    {% else %}
-                                        <label><input value='{{schedule._id}}' type="checkbox" name="lever"><span class="lever"></span></label>
-                                    {% endif %}
+                                {% if schedule.status =='active' %}
+                                <label><input type="checkbox" value="{{schedule._id}}" name="lever" checked><span
+                                        class="lever"></span></label>
+                                {% else %}
+                                <label><input value='{{schedule._id}}' type="checkbox" name="lever"><span
+                                        class="lever"></span></label>
+                                {% endif %}
                             </div>
                         </div>
                     </td>
-                  </tr>
+                </tr>
                 </tbody>
             {% endfor %}
-            </table>
+        </table>
         {% else %}
             <h4>The user do not have any schedule at the moment! </h4>
         {% endif %}
@@ -61,7 +63,8 @@
         <dl>
             <dt></dt>
             <dt>
-                <a href="{{url_for('main.edit_schedule')}}" class="btn waves-effect waves-light blue">Add schedule<i class="material-icons right">send</i></a>
+                <a href="{{url_for('main.edit_schedule')}}" class="btn waves-effect waves-light blue">Add schedule<i
+                        class="material-icons right">send</i></a>
                 <a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>
             </dt>
         </dl>

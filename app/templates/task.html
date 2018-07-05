@@ -6,23 +6,23 @@
         {% if tasks %}
             <table id="table-7">
                 <thead>
-                  <tr>
-                      <th>Select Report Level</th>
-                      <th>Select Country/Company</th>
-                      <th>Select Report Format</th>
-                      <th>Select Report Criteria</th>
-                      <th>Account / Employee</th>
-                      <th>Select Report Criteria</th>
-                      <th>Select Report Format</th>
-                      <th>Input Field</th>
-                      <th>Submit Time</th>
-                      <th>Process Time</th>
-                      <th>Status</th>
-                  </tr>
+                <tr>
+                    <th>Select Report Level</th>
+                    <th>Select Country/Company</th>
+                    <th>Select Report Format</th>
+                    <th>Select Report Criteria</th>
+                    <th>Account / Employee</th>
+                    <th>Select Report Criteria</th>
+                    <th>Select Report Format</th>
+                    <th>Input Field</th>
+                    <th>Submit Time</th>
+                    <th>Process Time</th>
+                    <th>Status</th>
+                </tr>
                 </thead>
                 <tbody>
                 {% for task in tasks %}
-                  <tr>
+                <tr>
                     <td>{{task.get("Select Report Level")}}</td>
                     <td>{{task.get("Select Country/Company")}}</td>
                     <td>{{task.get("Weekending Date Range Start date")}}</td>
@@ -34,7 +34,7 @@
                     <td>{{task.get("submit time")}}</td>
                     <td>{{task.get("process time")}}</td>
                     <td>{{task.get("status")}}</td>
-                  </tr>
+                </tr>
                 {% endfor %}
                 </tbody>
             </table>
@@ -50,7 +50,6 @@
                 <a class="btn waves-effect waves-teal" href="{{url_for('main.index')}}">Back home</a>
             </dt>
         </dl>
-
     </div>
 
 </div>
